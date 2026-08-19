@@ -6,6 +6,10 @@
 
 # ALUCINAJE — Robustez y pruebas adversariales responsables
 
+<p align="center">
+	<img src="docs/assets/ascii_art.png" alt="ASCII Art" width="720" />
+</p>
+
 ![license](https://img.shields.io/badge/license-MIT-blue.svg)
 ![issues](https://img.shields.io/badge/issues-welcome-brightgreen.svg)
 ![python](https://img.shields.io/badge/python-3.8%2B-yellow.svg)
