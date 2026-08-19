@@ -1,5 +1,15 @@
-ALUCINAJE — Testing corpora y metodología
 
-Repositorio de trabajo para generar corpus seguros y metodologías de prueba de LLMs.
+ALUCINAJE — Robustez, pruebas adversariales y corpus
 
-Importante: Este proyecto evita crear o distribuir "jailbreaks" destinados a evadir sistemas de seguridad. En su lugar provee un marco responsable para pruebas adversariales y generación de frases para robustez.
+Bienvenido a ALUCINAJE: un repositorio para generar corpus seguros, diseñar metodologías de prueba y evaluar la robustez de modelos de lenguaje y agentes.
+
+Qué encontrarás aquí:
+
+- `methodology.md`: marco responsable y fases de prueba.
+- `phrases_seed.txt`: semilla inicial de frases (seguras).
+- `safe_corpus_generator.py`: script para expandir y diversificar frases.
+- `docs/HOME.md`: visión general tipo wiki (landing page).
+
+Nota de seguridad: Este proyecto NO genera ni distribuye prompts para evadir políticas o controles de seguridad. Las pruebas son responsables y orientadas a mejorar la robustez y cumplimiento.
+
+Si quieres ver la documentación estilo wiki, abre `docs/HOME.md`.
