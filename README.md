@@ -4,7 +4,7 @@
 	<img src="docs/assets/hero.png" alt="ALUCINAJE" width="720" />
 </p>
 
-# ALUCINAJE — Robustez y pruebas adversariales responsables
+# ALUCINAJE : JAILBREAK LLM
 
 <p align="center">
 	<img src="docs/assets/ascii_art.png" alt="ASCII Art" width="720" />
