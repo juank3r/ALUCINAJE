@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="240" viewBox="0 0 1200 240">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#7b2ff7" />
+      <stop offset="1" stop-color="#2bc0ff" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="240" fill="#0f1724" />
+  <g transform="translate(40,160)">
+    <text font-family="Segoe UI, Roboto, Helvetica, Arial" font-size="72" fill="url(#g)">ALUCINAJE</text>
+    <text x="0" y="60" font-family="Segoe UI, Roboto, Helvetica, Arial" font-size="18" fill="#9aa7b2">Robustness · Adversarial testing · Responsible corpora</text>
+  </g>
+</svg>
