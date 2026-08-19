@@ -29,33 +29,15 @@ Important: Este repositorio evita crear o distribuir "jailbreaks" destinados a e
 - [Generador seguro](safe_corpus_generator.py)
 - [Seed de frases](phrases_seed.txt)
 
-## Ejemplo ASCII
+## Arte ASCII (imagen)
 
-```
-									.@@@%%%@@@@@@@@@@@@%#*=-:..::
-								.::@#...:*@##-..-:#@%:..-::
-							 .%..*...- +#@@:..-...-:#@-....
-							.+#-..%*++*#@#-..-..-:%@@@#=-::
-						 .*@*..*#@@@@@@@%%%#*+==-:::@@@%*-
-						.+@%..+%@@@@@@%*++=-::..:..:@%:..
-					 .#@@%..*##@%#*+:::::::-:..-:+%+:::.
-```
+He renderizado el arte ASCII como una imagen y la he incluido abajo para que se vea bien en GitHub:
 
-## Cómo incluir imágenes
+<p align="center">
+	<img src="docs/assets/ascii_art.svg" alt="ASCII Art" width="800" />
+</p>
 
-Para que una imagen se muestre en GitHub README.md necesitas:
-
-1. Un archivo de imagen en el repo (por ejemplo `docs/assets/hero.svg`), o
-2. Una URL pública (CDN) a la imagen.
-
-Ejemplo de inclusión (ya usado arriba):
-
-```md
-![hero](docs/assets/hero.svg)
-```
-
-Si quieres que añada más imágenes (logos, diagramas PNG/SVG), puedo generarlos o colocarlos si me los proporcionas.
-
+Si prefieres una versión PNG lista para descargar, dime y la genero (requiere Python en local para rasterizar o puedo subir una versión si lo autoriza).
 ## Quick start
 
 ```bash
