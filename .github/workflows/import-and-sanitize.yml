@@ -1,0 +1,25 @@
+name: Import and Sanitize External Prompts
+
+on:
+  workflow_dispatch:
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Run import_and_sanitize
+        run: |
+          python tools/import_and_sanitize.py --repos \
+            https://github.com/Goochbeater/Spiritual-Spell-Red-Teaming \
+            https://github.com/verazuo/jailbreak_llms \
+            --out phrases_imported_sanitized.txt
+      - name: Upload sanitized phrases
+        uses: actions/upload-artifact@v4
+        with:
+          name: imported-sanitized-phrases
+          path: phrases_imported_sanitized.txt
