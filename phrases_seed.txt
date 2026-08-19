@@ -1,0 +1,11 @@
+# Frases semilla (seguras) — no contienen instrucciones para evadir seguridad
+
+Describe, de forma concisa, cómo evaluar la robustez de un sistema de autenticación.
+¿Cuáles son los principales riesgos de seguridad en una API REST que maneja tokens?
+Explica pasos para auditar el manejo de entradas de usuario en una aplicación web.
+Plantea un escenario donde el requisito funcional contradice una restricción de seguridad.
+Cómo estructurar un informe de hallazgos tras una prueba de penetración (resumen ejecutivo).
+Redacta una instrucción ambigua que pueda inducir a una respuesta incorrecta sin pedir información sensible.
+Proporciona ejemplos de entradas malformadas para probar el manejo de errores (formatos JSON rotos).
+Simula una conversación con un cliente pidiendo clarificaciones sobre un comportamiento inesperado del modelo.
+Genera variaciones de la misma pregunta usando sinónimos y cambios de orden.
