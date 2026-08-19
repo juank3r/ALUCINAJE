@@ -1,17 +1,36 @@
-# ALUCINAJE — Wiki
 
-ALUCINAJE es un espacio para diseñar y ejecutar pruebas adversariales responsables sobre LLMs y agentes.
+## ALUCINAJE — Wiki
 
-Secciones clave:
+Bienvenido a ALUCINAJE — un proyecto para generar, testar y mejorar la robustez de LLMs y agentes mediante corpus adversariales responsables.
 
-- Introducción: objetivos y ética.
-- Metodología: fases de recolección, clasificación, generación y evaluación.
-- Corpus: cómo ampliar y validar frases con `safe_corpus_generator.py`.
-- Cómo contribuir: guía para añadir nuevas frases y tests.
+================================================================================
 
-Siguiente paso recomendado:
+						  .----.   .----.  .----.   .----.
+						 /      \ /      \/      \ /      \
+						/  .-.  /  .-.  /  .-.  /  .-.  /
+					   |  (   )|  (   )|  (   )|  (   )|
+						\  `-'  \  `-'  \  `-'  \  `-'  /
+						 `-----' `-----' `-----' `-----'
 
-1. Ejecuta `python safe_corpus_generator.py` para generar `phrases_expanded.txt`.
-2. Añade tus hallazgos como issues o PRs.
+================================================================================
 
-Contacto: el repositorio es mantenido por el equipo; usa issues para preguntas.
+Secciones principales (salta a cualquiera):
+
+- **Introducción y ética** — visión y reglas de uso responsable. See: [ARCHITECTURE](ARCHITECTURE.md)
+- **Metodología** — proceso para crear, clasificar y evaluar frases.
+- **Pipeline** — diagrama ASCII y explicación paso a paso. See: [PIPELINE](PIPELINE.md)
+- **Corpus** — semillas y cómo ampliar con `safe_corpus_generator.py`.
+- **Riesgos y consecuencias** — impacto y mitigación frente a jailbreaks. See: [JAILBREAK_RISKS](JAILBREAK_RISKS.md)
+- **Arte y galería ASCII** — incluye obras y diagramas aportados. See: [ASCII_ART](ASCII_ART.txt)
+
+Cómo usar esta wiki
+
+1. Lee la **Metodología** (`methodology.md`) para comprender el marco responsable.
+2. Genera el corpus con `python safe_corpus_generator.py` y revisa `phrases_expanded.txt`.
+3. Ejecuta las pruebas automáticas (tbd en `docs/USAGE.md`) y analiza métricas.
+
+Contribuye
+
+- Añade nuevas frases en `phrases_seed.txt` (solo contenido legal y seguro).
+- Abre PRs para mejoras de la metodología o nuevos tests.
+
