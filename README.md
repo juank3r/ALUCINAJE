@@ -1,7 +1,7 @@
 
 <!-- Hero -->
 <p align="center">
-	<img src="docs/assets/hero.svg" alt="ALUCINAJE" width="720" />
+	<img src="docs/assets/hero.png" alt="ALUCINAJE" width="720" />
 </p>
 
 # ALUCINAJE — Robustez y pruebas adversariales responsables

@@ -26,6 +26,15 @@ jobs:
           else
             echo "$SVG not found, skipping"
           fi
+          # Also convert hero SVG to PNG for compatibility on GitHub
+          HERO_SVG=docs/assets/hero.svg
+          HERO_OUT=docs/assets/hero.png
+          if [ -f "$HERO_SVG" ]; then
+            rsvg-convert -w 1200 -h 240 "$HERO_SVG" -o "$HERO_OUT"
+            echo "Converted $HERO_SVG -> $HERO_OUT"
+          else
+            echo "$HERO_SVG not found, skipping"
+          fi
 
       - name: Commit PNG
         run: |
