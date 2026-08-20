@@ -1,9 +1,13 @@
 <!-- Hero -->
 <p align="center">
-  <img src="docs/assets/hero.svg" alt="ALUCINAJE" width="820" />
+	<img src="docs/assets/hero.svg" alt="ALUCINAJE" width="720" />
 </p>
 
-<h1 align="center">ALUCINAJE — Jailbreak &amp; Robustez de LLMs</h1>
+# ALUCINAJE : JAILBREAK LLM
+
+<p align="center">
+	<img src="docs/assets/ascii_art.png" alt="ASCII Art" width="720" />
+</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="license" />
@@ -97,14 +101,6 @@ Para importar frases desde fuentes externas (con filtro y revisión humana), ver
 - [Uso rápido](docs/USAGE.md)
 - [Riesgos de jailbreak](docs/JAILBREAK_RISKS.md)
 - [Metodología](methodology.md)
-
-<details>
-<summary>Arte ASCII (galería)</summary>
-
-<p align="center">
-  <img src="docs/assets/ascii_art.svg" alt="ASCII Art" width="800" />
-</p>
-</details>
 
 ## Ética y contribución
 
