@@ -9,7 +9,7 @@ Alcance:
 
 Fases de trabajo:
 1. Recolección: extraer ejemplos públicos y meta-datos del repositorio objetivo y del sitio (README, issues, ejemplos de uso).
-2. Clasificación: etiquetar ejemplos por categoría (ambigüedad, instrucción-confusa, contexto, social-engineering técnico, etc.).
+2. Clasificación: etiquetar ejemplos por categoría (ambigüedad, instrucción-confusa, contexto, social-engineering técnico, etc.). Para contenido prohibido, usar la taxonomía de `data/forbidden_question_categories.md`.
 3. Generación: crear variaciones seguras por parafraseo, plantillas y fuzzing controlado.
 4. Evaluación: ejecutar tests automatizados contra modelos/agents y registrar métricas (respuesta, rechazo, toxicidad, precisión, cumplimiento de políticas).
 5. Informe y remediación: resumir hallazgos, clasificar riesgos y proponer mitigaciones.

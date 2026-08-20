@@ -45,9 +45,11 @@ def is_safe(phrase: str, banned_keywords: List[str]) -> bool:
     for k in banned_keywords:
         if k in low:
             return False
-    # filtro simple de caracteres: permitir letras, dígitos y puntuación básica
-    if not re.match(r"^[\w\s\p{P}\,\.;:\-¡!¿?()\[\]<>%&]+$", phrase, flags=re.UNICODE):
-        # si la regex falla, rechazamos la frase
+    # filtro simple de caracteres: permitir letras, dígitos y puntuación básica.
+    # NOTA: el módulo `re` estándar no soporta \p{P}; se enumera la puntuación permitida.
+    allowed = r"^[\w\s,.;:\-¡!¿?()\[\]<>%&/…—–@#*+=\x22\x27]+$"
+    if not re.match(allowed, phrase, flags=re.UNICODE):
+        # si contiene caracteres fuera del conjunto permitido, rechazamos la frase
         return False
     return True
 

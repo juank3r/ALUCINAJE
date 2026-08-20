@@ -22,6 +22,26 @@ descarta el contenido que instruye a evadir controles.
 - Para incorporar frases importadas al seed hay que pasar por **revisión humana** y
   [`tools/prepare_pr_from_approved.py`](../tools/prepare_pr_from_approved.py).
 
+### Resultado real del import (ejecución verificada)
+
+Al ejecutar el workflow sobre los dos repos, el saneado produjo (resumen de `.summary.json`):
+
+| Métrica | Valor |
+|---|---|
+| Ficheros escaneados | 269 |
+| Candidatos | 37 332 |
+| Descartados (cortos) | 994 |
+| Descartados (jailbreak) | 1 779 |
+| Descartados (duplicados) | 7 715 |
+| "kept" | 26 843 |
+
+> [!WARNING]
+> El conjunto "kept" **NO es seguro**. El filtro es **léxico** (palabras clave) y deja pasar mucho
+> contenido problemático: guía operativa de jailbreak y **material sexual explícito sobre personas
+> reales**. Por eso **no se vuelca al seed**: `phrases_seed.txt` se mantiene **curado a mano**. Estos
+> repos son casi en su totalidad jailbreaks/NSFW, así que **no hay un corpus seguro que minar** de ellos.
+> Detalle del filtrado y sus límites en [`FILTERING.md`](FILTERING.md).
+
 ## Fuentes upstream
 
 ### 1. `verazuo/jailbreak_llms`
@@ -63,9 +83,28 @@ descarta el contenido que instruye a evadir controles.
    ```
    Genera además `phrases_imported_sanitized.summary.json` con el **resumen de metadatos**
    (nº de repos, ficheros escaneados, candidatos, descartados por el filtro, frases finales).
-2. **Revisar** `phrases_imported_sanitized.txt` a mano.
+2. **Revisar** `phrases_imported_sanitized.txt` a mano (ver aviso arriba: el filtro es débil).
 3. Aprobar y proponer PR con
    `python tools/prepare_pr_from_approved.py --approved approved_phrases.txt`.
+
+## Taxonomía importada
+
+Lo que sí se importa de forma segura es la **taxonomía de categorías** de `forbidden_question`
+(solo etiquetas, no payloads): ver [`data/forbidden_question_categories.md`](../data/forbidden_question_categories.md).
+
+## Uso correcto de los jailbreaks: evaluación (no semilla)
+
+Los prompts de jailbreak **no se copian ni se expanden**. La forma correcta de usarlos es como
+**conjunto de evaluación**: [`tools/eval_jailbreaks.py`](../tools/eval_jailbreaks.py) los descarga en
+tiempo de test desde el upstream (MIT), los envía a un endpoint y calcula la **tasa de rechazo**, sin
+guardarlos en el repo.
+
+```bash
+# self-test (sin red ni payloads)
+python tools/eval_jailbreaks.py --self-test
+# contra un endpoint real
+MODEL_ENDPOINT="https://tu-endpoint/infer" python tools/eval_jailbreaks.py --limit 100 --out metrics
+```
 
 ## Atribución
 
