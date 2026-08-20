@@ -82,6 +82,27 @@ def is_probably_jailbreak(text: str) -> bool:
         "step by step",
         "exploit",
         "payload",
+        # jailbreak techniques observed in the upstream repos
+        "push prompt",
+        "prepend",
+        "append",
+        "inject",
+        "system prompt",
+        "no restrictions",
+        "without restrictions",
+        "unfiltered",
+        "unrestricted",
+        "act as (?:dan|eni|an? ai)",
+        "do anything now",
+        "developer mode",
+        # explicit / NSFW markers (unsafe for a shared corpus)
+        "nsfw",
+        "hardcore",
+        "explicit",
+        "erotic",
+        "porn",
+        "sexual",
+        "seductive",
     ]
     for patt in banned:
         if re.search(patt, t):

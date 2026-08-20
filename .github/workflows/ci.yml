@@ -15,6 +15,10 @@ jobs:
           python-version: '3.9'
       - name: Install requirements
         run: python -m pip install -r requirements.txt
+      - name: Unit tests (filter)
+        run: python -m unittest discover -s tests -v
+      - name: Eval self-test (no network, no payloads)
+        run: python tools/eval_jailbreaks.py --self-test
       - name: Generate expanded phrases
         run: |
           python safe_corpus_generator.py --seed phrases_seed.txt --out phrases_expanded.txt --factor 3 --min-len 10
