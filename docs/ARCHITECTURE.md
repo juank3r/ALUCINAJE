@@ -1,5 +1,7 @@
 # Arquitectura del proyecto ALUCINAJE
 
+![Arquitectura de ALUCINAJE](assets/architecture.svg)
+
 Resumen
 - ALUCINAJE está diseñado como una canalización modular para generar corpus adversariales seguros, ejecutar pruebas automatizadas contra modelos/agents y registrar métricas.
 

@@ -1,7 +1,9 @@
-# Pipeline y diagrama ASCII
+# Pipeline
+
+![Pipeline end-to-end](assets/pipeline.svg)
 
 Descripción
-- La pipeline transforma una semilla humana en un conjunto amplio de variantes seguras que se prueban contra modelos. A continuación se describen las etapas y se muestra un diagrama ASCII de alto nivel.
+- La pipeline transforma una semilla humana en un conjunto amplio de variantes seguras que se prueban contra modelos. A continuación se describen las etapas; más abajo se conserva además un diagrama ASCII de alto nivel.
 
 Etapas
 - 1) Seed: frases semilla manuales.
