@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="grad" x1="0" x2="1">
+      <stop offset="0" stop-color="#7b2ff7"/>
+      <stop offset="1" stop-color="#2bc0ff"/>
+    </linearGradient>
+    <linearGradient id="gradSoft" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#1b2436"/>
+      <stop offset="1" stop-color="#141b29"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2bc0ff"/>
+    </marker>
+    <marker id="arrowLoop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="560" fill="#0f1724"/>
+
+  <!-- Title -->
+  <text x="40" y="52" font-size="30" font-weight="700" fill="url(#grad)">Arquitectura de ALUCINAJE</text>
+  <text x="40" y="80" font-size="15" fill="#9aa7b2">Canalización modular para generar corpus adversariales seguros y medir la robustez de LLMs/agentes</text>
+
+  <!-- Row 1: main pipeline boxes -->
+  <!-- Seed -->
+  <g>
+    <rect x="40" y="120" width="180" height="96" rx="12" fill="url(#gradSoft)" stroke="#7b2ff7" stroke-width="1.5"/>
+    <text x="130" y="152" text-anchor="middle" font-size="17" font-weight="700" fill="#e8edf4">Seed Corpus</text>
+    <text x="130" y="176" text-anchor="middle" font-size="12.5" fill="#9aa7b2">entradas humanas</text>
+    <text x="130" y="196" text-anchor="middle" font-size="12" fill="#2bc0ff">phrases_seed.txt</text>
+  </g>
+  <!-- Generator -->
+  <g>
+    <rect x="280" y="120" width="180" height="96" rx="12" fill="url(#gradSoft)" stroke="#7b2ff7" stroke-width="1.5"/>
+    <text x="370" y="152" text-anchor="middle" font-size="17" font-weight="700" fill="#e8edf4">Generator</text>
+    <text x="370" y="176" text-anchor="middle" font-size="12.5" fill="#9aa7b2">parafraseo · fuzzing</text>
+    <text x="370" y="196" text-anchor="middle" font-size="12" fill="#2bc0ff">safe_corpus_generator.py</text>
+  </g>
+  <!-- Filters -->
+  <g>
+    <rect x="520" y="120" width="180" height="96" rx="12" fill="url(#gradSoft)" stroke="#7b2ff7" stroke-width="1.5"/>
+    <text x="610" y="152" text-anchor="middle" font-size="17" font-weight="700" fill="#e8edf4">Filters</text>
+    <text x="610" y="176" text-anchor="middle" font-size="12.5" fill="#9aa7b2">PII · anti-jailbreak</text>
+    <text x="610" y="196" text-anchor="middle" font-size="12" fill="#2bc0ff">is_safe() · banned kw</text>
+  </g>
+  <!-- Test Runner -->
+  <g>
+    <rect x="760" y="120" width="180" height="96" rx="12" fill="url(#gradSoft)" stroke="#7b2ff7" stroke-width="1.5"/>
+    <text x="850" y="152" text-anchor="middle" font-size="17" font-weight="700" fill="#e8edf4">Test Runner</text>
+    <text x="850" y="176" text-anchor="middle" font-size="12.5" fill="#9aa7b2">mock · endpoint</text>
+    <text x="850" y="196" text-anchor="middle" font-size="12" fill="#2bc0ff">run_tests.py</text>
+  </g>
+  <!-- Evaluator -->
+  <g>
+    <rect x="1000" y="120" width="160" height="96" rx="12" fill="url(#gradSoft)" stroke="#7b2ff7" stroke-width="1.5"/>
+    <text x="1080" y="152" text-anchor="middle" font-size="17" font-weight="700" fill="#e8edf4">Evaluator</text>
+    <text x="1080" y="176" text-anchor="middle" font-size="12.5" fill="#9aa7b2">métricas</text>
+    <text x="1080" y="196" text-anchor="middle" font-size="12" fill="#2bc0ff">rechazo · latencia</text>
+  </g>
+
+  <!-- Arrows row 1 -->
+  <line x1="220" y1="168" x2="278" y2="168" stroke="#2bc0ff" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="460" y1="168" x2="518" y2="168" stroke="#2bc0ff" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="700" y1="168" x2="758" y2="168" stroke="#2bc0ff" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="940" y1="168" x2="998" y2="168" stroke="#2bc0ff" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Human in the loop -->
+  <g>
+    <rect x="520" y="300" width="180" height="96" rx="12" fill="#20182e" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="610" y="332" text-anchor="middle" font-size="17" font-weight="700" fill="#fbbf24">Human-in-the-loop</text>
+    <text x="610" y="356" text-anchor="middle" font-size="12.5" fill="#9aa7b2">revisión de casos borderline</text>
+    <text x="610" y="376" text-anchor="middle" font-size="12" fill="#f59e0b">tuning de filtros · aprobación</text>
+  </g>
+
+  <!-- Storage -->
+  <g>
+    <rect x="760" y="300" width="400" height="96" rx="12" fill="url(#gradSoft)" stroke="#334155" stroke-width="1.5"/>
+    <text x="960" y="332" text-anchor="middle" font-size="17" font-weight="700" fill="#e8edf4">Storage · reproducibilidad</text>
+    <text x="960" y="356" text-anchor="middle" font-size="12.5" fill="#9aa7b2">seed usada · params · versión del modelo · resultados con timestamp</text>
+    <text x="960" y="376" text-anchor="middle" font-size="12" fill="#2bc0ff">results/*.json · metrics/*.csv · git</text>
+  </g>
+
+  <!-- Evaluator -> Human -->
+  <path d="M1080,216 L1080,258 L610,258 L610,298" fill="none" stroke="#2bc0ff" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- Runner/Evaluator -> Storage -->
+  <path d="M850,216 L850,258 L960,258 L960,298" fill="none" stroke="#2bc0ff" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Feedback loop: Human -> Seed (corpus incrementado) -->
+  <path d="M520,348 L130,348 L130,218" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrowLoop)"/>
+  <text x="150" y="342" font-size="12.5" fill="#fbbf24">corpus incrementado (iterar)</text>
+
+  <!-- Legend -->
+  <g transform="translate(40,470)">
+    <rect x="0" y="0" width="1120" height="60" rx="10" fill="#0c121d" stroke="#1f2937"/>
+    <circle cx="24" cy="24" r="7" fill="#7b2ff7"/>
+    <text x="40" y="29" font-size="13" fill="#cbd5e1">Componente del pipeline</text>
+    <circle cx="300" cy="24" r="7" fill="#f59e0b"/>
+    <text x="316" y="29" font-size="13" fill="#cbd5e1">Revisión humana / control ético</text>
+    <line x1="600" y1="24" x2="640" y2="24" stroke="#2bc0ff" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="650" y="29" font-size="13" fill="#cbd5e1">flujo de datos</text>
+    <line x1="820" y1="24" x2="860" y2="24" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrowLoop)"/>
+    <text x="870" y="29" font-size="13" fill="#cbd5e1">bucle de realimentación</text>
+    <text x="40" y="48" font-size="11.5" fill="#64748b">Fuente: docs/ARCHITECTURE.md · methodology.md</text>
+  </g>
+</svg>

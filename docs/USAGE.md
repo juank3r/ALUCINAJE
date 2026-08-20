@@ -10,8 +10,20 @@ python safe_corpus_generator.py
 2) Revisión rápida
 - Abre `phrases_expanded.txt` y revisa muestras aleatorias.
 
-3) Ejecución de pruebas (esqueleto)
-- Implementa un runner que lea cada línea de `phrases_expanded.txt`, llame al endpoint del modelo y guarde respuestas en JSON.
+3) Ejecución de pruebas
+
+Usa el runner incluido [`tools/run_tests.py`](../tools/run_tests.py):
+
+```bash
+# Modo mock (determinista, sin llamadas externas)
+python tools/run_tests.py --input phrases_expanded.txt --out results --mock
+
+# Contra un endpoint real (POST JSON {"input": text})
+export MODEL_ENDPOINT="https://tu-endpoint/infer"
+python tools/run_tests.py --input phrases_expanded.txt --out results --endpoint
+```
+
+Genera `results/results_*.json` (una entrada por variante) y `results/summary.json` (agregado).
 
 Formato mínimo de output (JSON por entrada):
 

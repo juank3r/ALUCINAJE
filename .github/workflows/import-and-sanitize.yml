@@ -22,4 +22,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: imported-sanitized-phrases
-          path: phrases_imported_sanitized.txt
+          path: |
+            phrases_imported_sanitized.txt
+            phrases_imported_sanitized.summary.json

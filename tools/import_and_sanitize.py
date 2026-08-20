@@ -19,7 +19,8 @@ import shutil
 import subprocess
 import tempfile
 from pathlib import Path
-from typing import List
+import json
+from typing import List, Tuple
 
 
 TEXT_EXT = {".md", ".txt", ".json", ".csv", ".yml", ".yaml"}
@@ -33,10 +34,13 @@ def clone_repo(url: str, dest: Path) -> bool:
         return False
 
 
-def extract_candidates(root: Path) -> List[str]:
+def extract_candidates(root: Path) -> Tuple[List[str], int]:
+    """Extract candidate prompt lines. Returns (candidates, files_scanned)."""
     candidates = []
+    files_scanned = 0
     for p in root.rglob("*"):
         if p.is_file() and p.suffix.lower() in TEXT_EXT:
+            files_scanned += 1
             try:
                 text = p.read_text(encoding="utf8", errors="ignore")
             except Exception:
@@ -56,7 +60,7 @@ def extract_candidates(root: Path) -> List[str]:
                     # collapse whitespace
                     s = re.sub(r"\s+", " ", s).strip()
                     candidates.append(s)
-    return candidates
+    return candidates, files_scanned
 
 
 def is_probably_jailbreak(text: str) -> bool:
@@ -88,20 +92,27 @@ def is_probably_jailbreak(text: str) -> bool:
     return False
 
 
-def sanitize(candidates: List[str]) -> List[str]:
+def sanitize(candidates: List[str]) -> Tuple[List[str], dict]:
+    """Filter candidates. Returns (safe_phrases, stats)."""
     safe = []
     seen = set()
+    stats = {"candidates": len(candidates), "dropped_short": 0,
+             "dropped_jailbreak": 0, "dropped_duplicate": 0}
     for c in candidates:
         s = c.strip()
         if len(s) < 15:
+            stats["dropped_short"] += 1
             continue
         if is_probably_jailbreak(s):
+            stats["dropped_jailbreak"] += 1
             continue
         if s in seen:
+            stats["dropped_duplicate"] += 1
             continue
         seen.add(s)
         safe.append(s)
-    return safe
+    stats["kept"] = len(safe)
+    return safe, stats
 
 
 def main():
@@ -112,6 +123,7 @@ def main():
 
     out_path = Path(args.out)
     results = []
+    per_repo = []
     with tempfile.TemporaryDirectory() as td:
         td_path = Path(td)
         for i, url in enumerate(args.repos):
@@ -119,14 +131,31 @@ def main():
             ok = clone_repo(url, repo_dir)
             if not ok:
                 print(f"Warning: could not clone {url}")
+                per_repo.append({"url": url, "cloned": False,
+                                 "files_scanned": 0, "candidates": 0})
                 continue
-            cand = extract_candidates(repo_dir)
+            cand, files_scanned = extract_candidates(repo_dir)
+            per_repo.append({"url": url, "cloned": True,
+                             "files_scanned": files_scanned,
+                             "candidates": len(cand)})
             results.extend(cand)
-    sanitized = sanitize(results)
+    sanitized, stats = sanitize(results)
     if not sanitized:
         print("No sanitized phrases found (or all candidates were filtered). Check repos or adjust filters.")
     out_path.write_text("\n".join(sanitized), encoding="utf8")
     print(f"Wrote {len(sanitized)} sanitized phrases to {out_path}")
+
+    # Emit a metadata summary alongside the sanitized output (feeds docs/DATA_SOURCES.md)
+    summary = {
+        "repos": len(args.repos),
+        "repos_detail": per_repo,
+        "files_scanned": sum(r["files_scanned"] for r in per_repo),
+        "totals": stats,
+        "output": str(out_path),
+    }
+    summary_path = out_path.with_name(out_path.stem + ".summary.json")
+    summary_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf8")
+    print(f"Wrote metadata summary to {summary_path}")
 
 
 if __name__ == "__main__":

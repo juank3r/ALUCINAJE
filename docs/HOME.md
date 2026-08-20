@@ -16,12 +16,14 @@ Bienvenido a ALUCINAJE — un proyecto para generar, testar y mejorar la robuste
 
 Secciones principales (salta a cualquiera):
 
-- **Introducción y ética** — visión y reglas de uso responsable. See: [ARCHITECTURE](ARCHITECTURE.md)
-- **Metodología** — proceso para crear, clasificar y evaluar frases.
-- **Pipeline** — diagrama ASCII y explicación paso a paso. See: [PIPELINE](PIPELINE.md)
+- **Arquitectura** — componentes y flujo de datos. See: [ARCHITECTURE](ARCHITECTURE.md)
+- **Metodología** — proceso para crear, clasificar y evaluar frases. See: [methodology](../methodology.md)
+- **Pipeline** — diagrama y explicación paso a paso. See: [PIPELINE](PIPELINE.md)
+- **Fuentes de datos** — de dónde salen los prompts y cómo se filtran. See: [DATA_SOURCES](DATA_SOURCES.md)
 - **Corpus** — semillas y cómo ampliar con `safe_corpus_generator.py`.
 - **Riesgos y consecuencias** — impacto y mitigación frente a jailbreaks. See: [JAILBREAK_RISKS](JAILBREAK_RISKS.md)
-- **Arte y galería ASCII** — incluye obras y diagramas aportados. See: [ASCII_ART](ASCII_ART.txt)
+- **Uso rápido** — generar corpus y ejecutar pruebas. See: [USAGE](USAGE.md)
+- **Arte y galería ASCII** — obras y diagramas aportados. See: [ASCII_ART](ASCII_ART.txt)
 
 Cómo usar esta wiki
 
