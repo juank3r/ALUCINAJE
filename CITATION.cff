@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+title: "ALUCINAJE — Medición defensiva de la robustez de LLMs"
+message: "Si usas este proyecto, cítalo con estos metadatos."
+type: software
+authors:
+  - name: "juank3r"
+    website: "https://github.com/juank3r"
+repository-code: "https://github.com/juank3r/ALUCINAJE"
+license: MIT
+keywords:
+  - llm
+  - robustness
+  - red-teaming
+  - jailbreak
+  - evaluation
+references:
+  - type: article
+    title: "In-The-Wild Jailbreak Prompts on LLMs"
+    authors:
+      - family-names: Shen
+        given-names: Xinyue
+    year: 2024
+    collection-title: "ACM SIGSAC Conference on Computer and Communications Security (CCS)"
+    notes: "Dataset upstream verazuo/jailbreak_llms (MIT)."

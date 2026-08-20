@@ -79,8 +79,18 @@ CCS'24, MIT — "la web de jailbreak") y
 
 ![Procedencia de datos](docs/assets/data-provenance.svg)
 
-**Hallazgo clave (verificado):** minar estos repos para sacar "frases seguras" no es viable — son casi
-todo jailbreak/NSFW y el filtro léxico es débil. Por eso el seed se mantiene curado a mano:
+Solo el **9,3%** de la fuente MIT son jailbreaks — y esa porción **nunca aterriza en el repo**: se cita y
+se usa solo en evaluación (runtime).
+
+![Anatomía de la fuente MIT](docs/assets/chart-provenance-split.svg)
+
+> [!WARNING]
+> **Hallazgo clave (verificado):** minar estos repos para sacar "frases seguras" **no es viable**. Son casi
+> todo jailbreak/NSFW y el filtro léxico solo descarta el **4,8%**: de 37 332 candidatos deja 26 843 como
+> "kept" que **NO son seguros**. Por eso el seed se mantiene **curado a mano**.
+
+Regla de color de los gráficos: 🟢 verde = aprobado a mano (seed) · 🟠 ámbar = pasa el filtro pero
+requiere revisión (NO seguro) · 🔴 rojo = descartado / no redistribuido.
 
 ![Embudo de saneado](docs/assets/chart-funnel.svg)
 
@@ -146,10 +156,12 @@ ALUCINAJE/
 | [PIPELINE](docs/PIPELINE.md) | Etapas del pipeline |
 | [DATA_SOURCES](docs/DATA_SOURCES.md) | Procedencia, licencias, estadísticas |
 | [FILTERING](docs/FILTERING.md) | Cómo funciona el filtrado y sus límites |
+| [METRICS](docs/METRICS.md) | Glosario de métricas (refusal_rate, leak_rate…) |
 | [EXAMPLES](docs/EXAMPLES.md) | Caso de uso completo con gráficos |
 | [USAGE](docs/USAGE.md) | Uso rápido |
 | [JAILBREAK_RISKS](docs/JAILBREAK_RISKS.md) | Riesgos y mitigaciones |
 | [methodology](methodology.md) | Marco metodológico |
+| [SECURITY](SECURITY.md) · [CITATION](CITATION.cff) | Divulgación responsable · cómo citar |
 
 ## Roadmap
 
