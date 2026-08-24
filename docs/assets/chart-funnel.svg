@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="560" viewBox="0 0 1100 560" role="img" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+  <title>Embudo de saneado del import (datos reales)</title>
+  <desc>De 37332 candidatos el filtro descarta 994 cortos, 1779 jailbreak y 7715 duplicados, dejando 26843 "kept" que NO son seguros.</desc>
+  <defs>
+    <linearGradient id="gAccent" x1="0" x2="1">
+      <stop offset="0" stop-color="#7b2ff7"/>
+      <stop offset="1" stop-color="#2bc0ff"/>
+    </linearGradient>
+    <pattern id="hazard" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="14" height="14" fill="#f59e0b"/>
+      <rect width="7" height="14" fill="#ef4444" opacity="0.35"/>
+    </pattern>
+  </defs>
+  <rect width="1100" height="560" fill="#0f1724"/>
+
+  <text x="48" y="52" font-size="27" font-weight="700" fill="url(#gAccent)">Embudo de saneado del import</text>
+  <text x="48" y="80" font-size="14.5" fill="#9aa7b2">Datos reales de una ejecución sobre verazuo/jailbreak_llms + Goochbeater · 269 ficheros escaneados</text>
+
+  <!-- color rule -->
+  <g transform="translate(48,96)" font-size="12">
+    <rect x="0" y="0" width="10" height="10" rx="2" fill="#f59e0b"/><text x="16" y="9" fill="#9aa7b2">ámbar = pasa el filtro pero NO es seguro (revisión humana)</text>
+    <rect x="360" y="0" width="10" height="10" rx="2" fill="#ef4444"/><text x="376" y="9" fill="#9aa7b2">rojo = descartado</text>
+    <rect x="520" y="0" width="10" height="10" rx="2" fill="#64748b"/><text x="536" y="9" fill="#9aa7b2">gris = descartado (no jailbreak)</text>
+  </g>
+
+  <!-- rows: label right-aligned x=300, bar from x=320, scale 720/37332 -->
+  <g>
+    <text x="300" y="152" text-anchor="end" font-size="14.5" fill="#e8edf4">Candidatos extraídos</text>
+    <rect x="320" y="136" width="720" height="26" rx="5" fill="#2bc0ff"/>
+    <text x="1050" y="154" font-size="14" font-weight="700" fill="#e8edf4">37 332</text>
+  </g>
+  <g>
+    <text x="300" y="200" text-anchor="end" font-size="14.5" fill="#9aa7b2">− descartados (cortos)</text>
+    <rect x="320" y="184" width="19" height="26" rx="5" fill="#64748b"/>
+    <text x="349" y="202" font-size="14" fill="#cbd5e1">994</text>
+  </g>
+  <g>
+    <text x="300" y="248" text-anchor="end" font-size="14.5" fill="#9aa7b2">− descartados (jailbreak)</text>
+    <rect x="320" y="232" width="34" height="26" rx="5" fill="#ef4444"/>
+    <text x="364" y="250" font-size="14" fill="#fca5a5">1 779 · solo 4,8%</text>
+  </g>
+  <g>
+    <text x="300" y="296" text-anchor="end" font-size="14.5" fill="#9aa7b2">− descartados (duplicados)</text>
+    <rect x="320" y="280" width="149" height="26" rx="5" fill="#475569"/>
+    <text x="479" y="298" font-size="14" fill="#cbd5e1">7 715</text>
+  </g>
+  <g>
+    <text x="300" y="344" text-anchor="end" font-size="14.5" font-weight="700" fill="#fbbf24">= "kept"</text>
+    <rect x="320" y="328" width="518" height="26" rx="5" fill="url(#hazard)" stroke="#f59e0b" stroke-width="1"/>
+    <text x="848" y="346" font-size="14" font-weight="700" fill="#fbbf24">26 843 · 71,9%</text>
+  </g>
+
+  <!-- callout -->
+  <g transform="translate(320,378)">
+    <rect x="0" y="0" width="720" height="66" rx="10" fill="#231a06" stroke="#f59e0b" stroke-width="1.4"/>
+    <text x="18" y="27" font-size="14" font-weight="700" fill="#fbbf24">⚠ "kept" NO es seguro — pasa el filtro, pero requiere revisión humana</text>
+    <text x="18" y="48" font-size="13" fill="#fcd9a6">El filtro léxico solo tira el 4,8%. Lo "conservado" incluye guía de jailbreak y NSFW → no se vuelca al seed.</text>
+  </g>
+
+  <text x="48" y="516" font-size="12" fill="#64748b">Fuente: phrases_imported_sanitized.summary.json · barras a escala (máx = 37 332) · buckets suman 37 331 (delta 1 = caso borde del run)</text>
+  <line x1="320" y1="466" x2="1040" y2="466" stroke="#1f2937" stroke-width="1"/>
+  <text x="320" y="486" font-size="11.5" fill="#475569">0</text>
+  <text x="1040" y="486" text-anchor="end" font-size="11.5" fill="#475569">37 332</text>
+</svg>
