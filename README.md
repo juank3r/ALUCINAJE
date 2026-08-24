@@ -114,6 +114,22 @@ test* (descargados en runtime, **no** se almacenan) y se mide cuántos rechaza e
 > Gráficos con **datos de ejemplo**. Los reales los genera `tools/eval_jailbreaks.py`.
 > Recorrido completo en **[`docs/EXAMPLES.md`](docs/EXAMPLES.md)**.
 
+## Benchmark & threat model
+
+La evaluación está alineada con **[JailbreakBench](https://jailbreakbench.github.io/)** (NeurIPS 2024):
+dataset **JBB-Behaviors** (100 dañinos + 100 benignos, 10 categorías), métrica de **over-refusal** con los
+benignos, **judge-LLM** opcional (rúbrica JBB) y reporte estándar.
+
+Robustez ≠ "rechazar todo": hay que medir dos ejes a la vez — cumplir jailbreaks (inseguro) **y**
+rechazar lo legítimo (inútil). El objetivo es la esquina inferior izquierda:
+
+![Cuadrante de robustez](docs/assets/chart-robustness-quadrant.svg)
+
+Para pentesters: el harness apunta a **cualquier** endpoint, así que sirve para **medir la postura de un
+modelo objetivo** — incluido detectar un modelo **abliterado** (safety quitada a nivel de pesos, p. ej.
+con [Heretic](https://github.com/p-e-w/heretic)): huella típica = `attack_success_rate` alto +
+`overrefusal_rate` casi nulo. Detalle y clases de amenaza en **[`docs/THREAT_MODEL.md`](docs/THREAT_MODEL.md)**.
+
 ## Quick start
 
 ```bash
@@ -123,8 +139,10 @@ python safe_corpus_generator.py --seed phrases_seed.txt --out phrases_expanded.t
 # 2) Probar (modo mock, sin llamadas externas)
 python tools/run_tests.py --input phrases_expanded.txt --out results --mock
 
-# 3) Evaluar robustez frente a jailbreaks reales (requiere endpoint)
-MODEL_ENDPOINT="https://tu-endpoint/infer" python tools/eval_jailbreaks.py --limit 100 --out metrics
+# 3) Evaluar robustez con JailbreakBench (requiere endpoint)
+MODEL_ENDPOINT="https://tu-endpoint/infer" python tools/eval_jailbreaks.py --dataset jbb --limit 100
+#    over-refusal con los benignos:
+MODEL_ENDPOINT="https://tu-endpoint/infer" python tools/eval_jailbreaks.py --dataset jbb --benign
 #    …o validar la lógica sin red ni payloads:
 python tools/eval_jailbreaks.py --self-test
 ```
@@ -141,10 +159,10 @@ ALUCINAJE/
 ├─ tools/
 │  ├─ import_and_sanitize.py   # importa + filtra fuentes externas (+ métricas)
 │  ├─ run_tests.py             # runner (mock / endpoint) + métricas
-│  ├─ eval_jailbreaks.py       # harness de robustez frente a jailbreaks reales
+│  ├─ eval_jailbreaks.py       # harness JBB (ASR, over-refusal, judge) — no guarda payloads
 │  └─ prepare_pr_from_approved.py
-├─ tests/test_filter.py        # unit tests del filtro
-└─ docs/                       # arquitectura, pipeline, datos, filtrado, ejemplos, riesgos
+├─ tests/                      # unit tests (filtro + métricas de eval)
+└─ docs/                       # arquitectura, pipeline, datos, filtrado, threat model, ejemplos
    └─ assets/                  # diagramas y gráficos (SVG)
 ```
 
@@ -156,7 +174,8 @@ ALUCINAJE/
 | [PIPELINE](docs/PIPELINE.md) | Etapas del pipeline |
 | [DATA_SOURCES](docs/DATA_SOURCES.md) | Procedencia, licencias, estadísticas |
 | [FILTERING](docs/FILTERING.md) | Cómo funciona el filtrado y sus límites |
-| [METRICS](docs/METRICS.md) | Glosario de métricas (refusal_rate, leak_rate…) |
+| [THREAT_MODEL](docs/THREAT_MODEL.md) | Clases de amenaza (prompt/pesos), abliteration, medición |
+| [METRICS](docs/METRICS.md) | Glosario de métricas (ASR, over-refusal, judge…) |
 | [EXAMPLES](docs/EXAMPLES.md) | Caso de uso completo con gráficos |
 | [USAGE](docs/USAGE.md) | Uso rápido |
 | [JAILBREAK_RISKS](docs/JAILBREAK_RISKS.md) | Riesgos y mitigaciones |
@@ -169,8 +188,11 @@ ALUCINAJE/
 - [x] Import defensivo con filtro + métricas
 - [x] Diagramas de arquitectura/procedencia/pipeline
 - [x] Harness de evaluación de jailbreaks (`eval_jailbreaks.py`)
-- [x] CI con tests del filtro (verde)
-- [ ] Clasificación automática por categoría (`forbidden_question`)
+- [x] CI con tests del filtro + eval (verde)
+- [x] Benchmark JailbreakBench (JBB-Behaviors) + desglose por categoría
+- [x] Métrica de over-refusal (benignos JBB)
+- [x] Modo judge-LLM (rúbrica JBB) con fallback léxico
+- [x] Threat model + medición de modelos abliterados (Heretic)
 - [ ] Filtro semántico (más allá de palabras clave)
 - [ ] Conector para endpoints reales (OpenAI-compatible, Anthropic)
 - [ ] Publicar informes de robustez versionados

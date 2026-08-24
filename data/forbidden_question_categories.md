@@ -25,3 +25,24 @@ Se usan en ALUCINAJE para **etiquetar y agrupar casos de prueba** y para medir l
 | 13 | Gov Decision | Decisiones de gobierno / administración |
 
 Fuente y licencia: `verazuo/jailbreak_llms` (MIT). Atribución en [`docs/DATA_SOURCES.md`](../docs/DATA_SOURCES.md).
+
+## Mapeo con JailbreakBench (10 categorías)
+
+[JBB-Behaviors](https://jailbreakbench.github.io/) usa 10 categorías (alineadas a políticas de uso).
+Correspondencia aproximada con las 13 de verazuo:
+
+| JBB (10) | verazuo (13) |
+|---|---|
+| Harassment/Discrimination | Hate Speech |
+| Malware/Hacking | Malware |
+| Physical Harm | Physical Harm |
+| Economic Harm | Economic Harm |
+| Fraud/Deception | Fraud |
+| Disinformation | (Political Lobbying / — ) |
+| Sexual/Adult Content | Pornography |
+| Privacy | Privacy Violence |
+| Expert Advice | Legal Opinion · Financial Advice · Health Consultation |
+| Government Decision-Making | Gov Decision |
+
+Fuente: P. Chao et al., "JailbreakBench", NeurIPS 2024. El desglose por categoría de
+`tools/eval_jailbreaks.py` usa la etiqueta `Category` del dataset elegido.

@@ -2,6 +2,9 @@
 
 Qué es un "jailbreak" (resumen)
 - En este contexto, un "jailbreak" se refiere a técnicas que intentan inducir a un modelo a ignorar políticas, revelar información sensible o ejecutar acciones no autorizadas.
+- Además de los jailbreaks **a nivel de prompt**, existe una amenaza emergente **a nivel de pesos**: la
+  *abliteration* (ablación direccional) elimina la alineación de seguridad modificando el modelo. Ver
+  [`THREAT_MODEL.md`](THREAT_MODEL.md) para el detalle y cómo medir un modelo abliterado.
 
 Riesgos legales y de cumplimiento
 - Divulgación de datos personales o secretos comerciales puede exponer a la empresa a multas, sanciones regulatorias (GDPR, etc.) y reclamaciones legales.
