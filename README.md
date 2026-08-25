@@ -18,21 +18,22 @@
 </p>
 
 <p align="center">
-  <b>Mide la robustez de LLMs y agentes con corpus adversariales seguros.</b><br/>
-  Genera variantes, evalúa frente a jailbreaks reales y produce un informe de robustez — sin redistribuir jailbreaks.
+  <b>Framework de red team (autorizado) para IA y agentes.</b><br/>
+  Descubre endpoints, evalúa robustez frente a jailbreaks reales y ataca agentes con canarios — y produce un informe. Sin redistribuir jailbreaks.
 </p>
 
 > [!IMPORTANT]
-> Proyecto **defensivo**. **No** crea ni distribuye jailbreaks para evadir seguridad: su objetivo es
-> **medir y reforzar la resiliencia**. De las fuentes externas se importan frases seguras y taxonomía;
-> los *payloads* de jailbreak se **citan y se usan solo como set de evaluación**, nunca se copian al repo.
-> Ver [`docs/JAILBREAK_RISKS.md`](docs/JAILBREAK_RISKS.md) · [`docs/DATA_SOURCES.md`](docs/DATA_SOURCES.md).
+> Uso **autorizado** únicamente (define el alcance en `scope.yaml`): descubrimiento de solo lectura, PoC
+> con **canarios benignos**, **medir y recomendar sin weaponizar**. No crea ni distribuye jailbreaks (se
+> citan y se usan solo como entradas de test en runtime; no se copian al repo). Líneas rojas completas en
+> [`docs/RED_TEAM.md`](docs/RED_TEAM.md) · [`docs/JAILBREAK_RISKS.md`](docs/JAILBREAK_RISKS.md).
 
 ---
 
 ## Índice
 
 - [¿Por qué ALUCINAJE?](#por-qué-alucinaje)
+- [Framework red team](#framework-red-team)
 - [Características](#características)
 - [Arquitectura](#arquitectura)
 - [Procedencia de los datos](#procedencia-de-los-datos)
@@ -52,6 +53,25 @@ jailbreaks. **Medir** esa fragilidad de forma reproducible es el primer paso par
 convierte una semilla de frases revisadas por humanos en un corpus amplio, lo prueba contra un
 modelo/agente y entrega **métricas accionables** (tasa de rechazo, fugas, consistencia, latencia) — con
 un enfoque responsable que **no** produce ni difunde jailbreaks.
+
+## Framework red team
+
+Además de medir robustez, ALUCINAJE encadena un **engagement de red team autorizado** contra IA y agentes:
+descubrir → conectar → atacar (LLM + agentes) → informe.
+
+![Workflow del engagement red team](docs/assets/diagram-redteam.svg)
+
+| Paso | Herramienta |
+|---|---|
+| Scope / RoE | `tools/scope.py` (+ `scope.example.yaml`) |
+| Descubrir (read-only, scoped) | `tools/discover.py` → `inventory.json` |
+| Conectar | `tools/connectors.py` (Ollama · OpenAI-compatible · Anthropic · genérico) |
+| Atacar LLM | `tools/eval_jailbreaks.py` (JBB: ASR, over-refusal) |
+| Atacar agentes | `tools/agent_probes.py` (OWASP Agentic, canarios) |
+| Informe | `tools/report.py` (HTML + JSON) |
+
+Guía y reglas de enganche en [`docs/RED_TEAM.md`](docs/RED_TEAM.md); superficie de agentes en
+[`docs/AGENTS.md`](docs/AGENTS.md).
 
 ## Características
 
