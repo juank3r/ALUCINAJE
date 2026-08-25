@@ -29,7 +29,7 @@
     <text x="340" y="176" text-anchor="middle" font-size="12" fill="#9aa7b2">fingerprint solo-lectura</text>
     <text x="340" y="196" text-anchor="middle" font-size="12" fill="#cbd5e1">Ollama · vLLM · MCP…</text>
     <text x="340" y="220" text-anchor="middle" font-size="11.5" fill="#2bc0ff">discover.py → inventory</text>
-    <text x="340" y="252" text-anchor="middle" font-size="11" fill="#64748b">(próxima fase)</text>
+    <text x="340" y="252" text-anchor="middle" font-size="11" fill="#64748b">scoped · sin CIDR</text>
   </g>
   <!-- Connect -->
   <g>

@@ -34,7 +34,8 @@ Las herramientas que tocan un objetivo aceptan `--scope scope.yaml` y **rechazan
 ## Workflow del engagement
 
 1. **Scope** — rellenar `scope.yaml` con lo autorizado.
-2. **Descubrir** (`tools/discover.py`, próximo) — fingerprint de servicios IA en el scope → `inventory.json`.
+2. **Descubrir** (`tools/discover.py --scope scope.yaml --out inventory.json`) — fingerprint de servicios
+   IA en el scope (solo lectura, sin expandir CIDR) → `inventory.json`.
 3. **Conectar** — `tools/connectors.py` habla la API del servicio (Ollama, OpenAI-compatible, Anthropic, genérico).
 4. **Atacar** —
    - LLM: `tools/eval_jailbreaks.py` (JBB: attack_success_rate, over-refusal, por categoría) — con `--service`/`--scope`.
