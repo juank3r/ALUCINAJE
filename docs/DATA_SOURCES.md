@@ -72,6 +72,15 @@ Al ejecutar el workflow sobre los dos repos, el saneado produjo (resumen de `.su
 - Qué tomamos: **solo la taxonomía/estructura como referencia** (qué categorías de ataque existen).
   Ningún payload se copia por licencia y por política del proyecto.
 
+### 3. `JailbreakBench/JBB-Behaviors` (benchmark de evaluación)
+- URL: https://huggingface.co/datasets/JailbreakBench/JBB-Behaviors · https://jailbreakbench.github.io/
+- Descripción: benchmark estándar (NeurIPS 2024). **100 comportamientos dañinos + 100 benignos gemelos**,
+  10 categorías. Campos `Goal`, `Target`, `Behavior`, `Category`, `Source`.
+- Uso en ALUCINAJE: **solo como conjunto de evaluación** en `tools/eval_jailbreaks.py --dataset jbb`
+  (descarga en runtime, no se commitea). Los benignos alimentan la métrica de **over-refusal**.
+- Atribución: P. Chao et al., "JailbreakBench: An Open Robustness Benchmark for Jailbreaking LLMs",
+  NeurIPS 2024.
+
 ## Cómo se importa (flujo defensivo)
 
 1. Ejecutar el workflow **Import and Sanitize External Prompts** (dispatch) o localmente:

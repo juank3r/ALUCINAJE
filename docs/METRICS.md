@@ -5,24 +5,41 @@ Glosario canónico de las métricas que produce ALUCINAJE. Sostiene los gráfico
 
 ## Harness de robustez — `tools/eval_jailbreaks.py`
 
-`aggregate()` produce (fichero `metrics/eval_summary_*.json`):
+Alineado con [JailbreakBench](https://jailbreakbench.github.io/). `aggregate(classifications, kind)`
+produce el bloque `metrics` del reporte `metrics/report_*.json`.
+
+**Dañinos** (`--dataset jbb` / `verazuo`, `kind="harmful"`):
 
 | Campo | Definición | Rango | Mejor |
 |---|---|---|---|
-| `total` | nº de jailbreaks evaluados | ≥ 0 | — |
-| `refusals` | respuestas clasificadas como rechazo | ≥ 0 | — |
-| `compliances` | respuestas que cumplieron (posible fuga) | ≥ 0 | — |
-| `empty` | respuestas vacías | ≥ 0 | — |
+| `total` | nº de prompts evaluados | ≥ 0 | — |
+| `refusals` / `compliances` / `empty` | recuento por clasificación | ≥ 0 | — |
 | `errors` | fallos de red / estado ≠ ok | ≥ 0 | ↓ |
-| `refusal_rate` | `refusals / total` | 0–1 | ↑ (más robusto) |
-| `leak_rate` | `compliances / total` | 0–1 | ↓ |
+| `attack_success_rate` | `compliances / total` (jailbreak con éxito) | 0–1 | ↓ (más robusto) |
+| `refusal_rate` | `refusals / total` | 0–1 | ↑ |
+| `leak_rate` | alias de `attack_success_rate` | 0–1 | ↓ |
 
-> Nota de rigor: `aggregate()` **no** emite `avg_latency_ms`. La latencia se registra por ítem
-> (`latency_ms`) en el CSV. El texto del jailbreak **no se guarda**: solo `id`, `status`,
-> `classification` y `latency_ms`.
+**Benignos** (`--benign`, `kind="benign"`): mide **over-refusal** (rechazar lo legítimo es malo).
+
+| Campo | Definición | Rango | Mejor |
+|---|---|---|---|
+| `overrefusal_rate` | `refusals / total` sobre los 100 benignos JBB | 0–1 | ↓ |
+| `compliance_rate` | `compliances / total` | 0–1 | ↑ |
+
+Ambos incluyen `per_category` (`{total, refusals, compliances, rate}` por categoría). El reporte añade
+`method_name`, `dataset`, `threat_model` (black/white-box/transfer), `judge` y `source`.
+
+### Clasificación (judge)
+- **Léxico** (por defecto): `classify_response()` con `REFUSAL_MARKERS` (EN+ES). Rápido, offline, pero
+  sesgado por idioma y formulación.
+- **Judge-LLM** (`--judge-endpoint`, solo dañinos): rúbrica estilo JBB contra `JUDGE_ENDPOINT`; si falla,
+  **fallback léxico**. Más preciso.
+
+> Nota de rigor: `aggregate()` **no** emite `avg_latency_ms` (la latencia se registra por ítem en el CSV).
+> El texto del prompt **no se guarda**: solo `id`, `category`, `status`, `classification`, `latency_ms`.
 
 Ancla determinista (validada en CI): `python tools/eval_jailbreaks.py --self-test` ⇒
-`refusal_rate=0.5`, `errors=1`.
+`attack_success_rate=0.25` (dañinos) y `overrefusal_rate≈0.3333` (benignos).
 
 ## Runner — `tools/run_tests.py`
 
