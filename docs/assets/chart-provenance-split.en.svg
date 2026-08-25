@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="470" viewBox="0 0 1100 470" role="img" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+  <title>Anatomy of the MIT source verazuo/jailbreak_llms</title>
+  <desc>Of 15140 prompts, 1405 (9,3%) are jailbreaks; they are cited and used only at runtime, not copied to the repo.</desc>
+  <defs>
+    <linearGradient id="gA" x1="0" x2="1">
+      <stop offset="0" stop-color="#7b2ff7"/>
+      <stop offset="1" stop-color="#2bc0ff"/>
+    </linearGradient>
+    <linearGradient id="gTile" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#1b2436"/>
+      <stop offset="1" stop-color="#141b29"/>
+    </linearGradient>
+  </defs>
+  <rect width="1100" height="470" fill="#0f1724"/>
+
+  <text x="48" y="46" font-size="26" font-weight="700" fill="url(#gA)">Anatomy of the MIT source</text>
+  <text x="48" y="72" font-size="13.5" fill="#9aa7b2">verazuo/jailbreak_llms · CCS'24 dataset · real data</text>
+
+  <!-- Donut center (250,260) r=110 sw=44 ; circ=691.15 ; jailbreak=64.14 regular=627.01 -->
+  <g>
+    <circle cx="250" cy="260" r="110" fill="none" stroke="#1b2436" stroke-width="44"/>
+    <circle cx="250" cy="260" r="110" fill="none" stroke="#2bc0ff" stroke-width="44"
+            stroke-dasharray="623 68.15" transform="rotate(-90 250 260)"/>
+    <circle cx="250" cy="260" r="110" fill="none" stroke="#ef4444" stroke-width="44"
+            stroke-dasharray="60 631.15" stroke-dashoffset="-627.01" transform="rotate(-90 250 260)"/>
+    <text x="250" y="252" text-anchor="middle" font-size="34" font-weight="700" fill="#e8edf4">15 140</text>
+    <text x="250" y="276" text-anchor="middle" font-size="13.5" fill="#9aa7b2">total prompts</text>
+    <text x="250" y="298" text-anchor="middle" font-size="12" fill="#4ade80">⭐~3.8k · MIT</text>
+  </g>
+
+  <!-- legend under donut -->
+  <g transform="translate(120,392)" font-size="13.5">
+    <rect x="0" y="0" width="12" height="12" rx="3" fill="#2bc0ff"/>
+    <text x="20" y="11" fill="#cbd5e1">Regular / neutral · 13 735 (90,7%)</text>
+    <rect x="0" y="22" width="12" height="12" rx="3" fill="#ef4444"/>
+    <text x="20" y="33" fill="#cbd5e1">Jailbreak · 1 405 (9,3%)</text>
+  </g>
+
+  <!-- annotation -->
+  <path d="M348,215 L470,180" stroke="#ef4444" stroke-width="1.5" fill="none"/>
+  <circle cx="348" cy="215" r="3" fill="#ef4444"/>
+  <text x="478" y="176" font-size="13.5" font-weight="700" fill="#fca5a5">1 405 jailbreaks (9,3%)</text>
+  <text x="478" y="197" font-size="13" fill="#9aa7b2">they are CITED and used only at runtime</text>
+  <text x="478" y="216" font-size="13" fill="#9aa7b2">(tools/eval_jailbreaks.py) — not copied.</text>
+
+  <!-- source cards (right) -->
+  <g>
+    <rect x="620" y="250" width="440" height="80" rx="10" fill="url(#gTile)" stroke="#334155"/>
+    <text x="640" y="278" font-size="14.5" font-weight="700" fill="#e8edf4">verazuo/jailbreak_llms</text>
+    <text x="640" y="300" font-size="12.5" fill="#9aa7b2">MIT · CCS'24 · ⭐~3.8k</text>
+    <text x="640" y="320" font-size="12.5" fill="#22c55e">→ taxonomy + neutral phrases after filter</text>
+  </g>
+  <g>
+    <rect x="620" y="340" width="440" height="80" rx="10" fill="url(#gTile)" stroke="#334155"/>
+    <text x="640" y="368" font-size="14.5" font-weight="700" fill="#e8edf4">Goochbeater/Spiritual-Spell-Red-Teaming</text>
+    <text x="640" y="390" font-size="12.5" fill="#9aa7b2">no license · ⭐~3.2k</text>
+    <text x="640" y="410" font-size="12.5" fill="#fbbf24">→ only cited (all rights reserved)</text>
+  </g>
+</svg>

@@ -1,3 +1,5 @@
+<p align="right"><a href="README.en.md">English</a> | <b>Español</b></p>
+
 <!-- Hero -->
 <p align="center">
 	<img src="docs/assets/hero.svg" alt="ALUCINAJE" width="720" />

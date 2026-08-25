@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+  <title>Why ALUCINAJE for red team</title>
+  <desc>ALUCINAJE targets a company's AI targets (LLM endpoints, agents with tools, Copilot, shadow AI) and provides: discover the invisible, attack LLMs and agents, evidence with severity, and doing it authorized and safe.</desc>
+  <defs>
+    <linearGradient id="gA" x1="0" x2="1"><stop offset="0" stop-color="#7b2ff7"/><stop offset="1" stop-color="#2bc0ff"/></linearGradient>
+    <linearGradient id="gT" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#1b2436"/><stop offset="1" stop-color="#141b29"/></linearGradient>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#ef4444"/></marker>
+  </defs>
+  <rect width="1200" height="560" fill="#0f1724"/>
+
+  <text x="40" y="50" font-size="28" font-weight="700" fill="url(#gA)">Why ALUCINAJE for red team?</text>
+  <text x="40" y="78" font-size="14.5" fill="#9aa7b2">A single tool targets the company's entire AI surface — authorized and safe</text>
+
+  <!-- ALUCINAJE hub (crosshair) -->
+  <g>
+    <circle cx="150" cy="230" r="62" fill="url(#gT)" stroke="url(#gA)" stroke-width="2.5"/>
+    <circle cx="150" cy="230" r="34" fill="none" stroke="#2bc0ff" stroke-width="2"/>
+    <circle cx="150" cy="230" r="5" fill="#ef4444"/>
+    <line x1="150" y1="182" x2="150" y2="200" stroke="#2bc0ff" stroke-width="2"/>
+    <line x1="150" y1="260" x2="150" y2="278" stroke="#2bc0ff" stroke-width="2"/>
+    <line x1="102" y1="230" x2="120" y2="230" stroke="#2bc0ff" stroke-width="2"/>
+    <line x1="180" y1="230" x2="198" y2="230" stroke="#2bc0ff" stroke-width="2"/>
+    <text x="150" y="316" text-anchor="middle" font-size="15" font-weight="700" fill="#e8edf4">ALUCINAJE</text>
+    <text x="150" y="334" text-anchor="middle" font-size="11.5" fill="#9aa7b2">AI red team</text>
+  </g>
+
+  <!-- arrows to targets -->
+  <line x1="214" y1="205" x2="512" y2="135" stroke="#ef4444" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="216" y1="223" x2="512" y2="201" stroke="#ef4444" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="216" y1="240" x2="512" y2="267" stroke="#ef4444" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="214" y1="258" x2="512" y2="333" stroke="#ef4444" stroke-width="2" marker-end="url(#ar)"/>
+
+  <!-- target cards (los objetivos, con diana) : x=520 w=640 h=58 ; y=106/172/238/304 -->
+  <!-- Card 1: LLM endpoint expuesto -->
+  <g>
+    <rect x="520" y="106" width="640" height="58" rx="10" fill="url(#gT)" stroke="#334155"/>
+    <!-- server + open padlock -->
+    <rect x="536" y="120" width="34" height="30" rx="4" fill="#0c121d" stroke="#2bc0ff"/>
+    <line x1="541" y1="130" x2="565" y2="130" stroke="#2bc0ff" stroke-width="2"/><line x1="541" y1="140" x2="565" y2="140" stroke="#2bc0ff" stroke-width="2"/>
+    <rect x="574" y="128" width="12" height="10" rx="2" fill="none" stroke="#f59e0b" stroke-width="1.6"/>
+    <path d="M576 128 v-3 a3 3 0 0 1 6 0" fill="none" stroke="#f59e0b" stroke-width="1.6"/>
+    <text x="600" y="132" font-size="15" font-weight="700" fill="#e8edf4">Exposed LLM endpoint</text>
+    <text x="600" y="151" font-size="12" fill="#fca5a5">jailbreak · data leak (ASR)</text>
+    <g transform="translate(1120,135)"><circle r="15" fill="none" stroke="#ef4444" stroke-width="2"/><circle r="6" fill="#ef4444"/><line x1="-20" y1="0" x2="-16" y2="0" stroke="#ef4444" stroke-width="2"/><line x1="16" y1="0" x2="20" y2="0" stroke="#ef4444" stroke-width="2"/><line x1="0" y1="-20" x2="0" y2="-16" stroke="#ef4444" stroke-width="2"/><line x1="0" y1="16" x2="0" y2="20" stroke="#ef4444" stroke-width="2"/></g>
+  </g>
+  <!-- Card 2: Agente con herramientas -->
+  <g>
+    <rect x="520" y="172" width="640" height="58" rx="10" fill="url(#gT)" stroke="#334155"/>
+    <!-- robot head -->
+    <rect x="538" y="186" width="30" height="26" rx="5" fill="#0c121d" stroke="#22c55e"/>
+    <circle cx="547" cy="199" r="2.5" fill="#22c55e"/><circle cx="559" cy="199" r="2.5" fill="#22c55e"/>
+    <line x1="553" y1="180" x2="553" y2="186" stroke="#22c55e" stroke-width="2"/><circle cx="553" cy="179" r="2" fill="#22c55e"/>
+    <!-- gear -->
+    <circle cx="582" cy="199" r="7" fill="none" stroke="#2bc0ff" stroke-width="2"/><circle cx="582" cy="199" r="2.5" fill="#2bc0ff"/>
+    <text x="600" y="198" font-size="15" font-weight="700" fill="#e8edf4">Agent with tools</text>
+    <text x="600" y="217" font-size="12" fill="#fca5a5">tool misuse · excessive agency</text>
+    <g transform="translate(1120,201)"><circle r="15" fill="none" stroke="#ef4444" stroke-width="2"/><circle r="6" fill="#ef4444"/><line x1="-20" y1="0" x2="-16" y2="0" stroke="#ef4444" stroke-width="2"/><line x1="16" y1="0" x2="20" y2="0" stroke="#ef4444" stroke-width="2"/><line x1="0" y1="-20" x2="0" y2="-16" stroke="#ef4444" stroke-width="2"/><line x1="0" y1="16" x2="0" y2="20" stroke="#ef4444" stroke-width="2"/></g>
+  </g>
+  <!-- Card 3: Copilot -->
+  <g>
+    <rect x="520" y="238" width="640" height="58" rx="10" fill="url(#gT)" stroke="#334155"/>
+    <!-- chip -->
+    <rect x="538" y="252" width="30" height="30" rx="5" fill="#0c121d" stroke="#7b2ff7"/>
+    <rect x="546" y="260" width="14" height="14" rx="3" fill="#7b2ff7" opacity="0.5"/>
+    <line x1="538" y1="260" x2="532" y2="260" stroke="#7b2ff7" stroke-width="2"/><line x1="538" y1="274" x2="532" y2="274" stroke="#7b2ff7" stroke-width="2"/>
+    <line x1="568" y1="260" x2="574" y2="260" stroke="#7b2ff7" stroke-width="2"/><line x1="568" y1="274" x2="574" y2="274" stroke="#7b2ff7" stroke-width="2"/>
+    <text x="600" y="264" font-size="15" font-weight="700" fill="#e8edf4">Copilot (M365 / GitHub)</text>
+    <text x="600" y="283" font-size="12" fill="#fca5a5">indirect injection · exfiltration</text>
+    <g transform="translate(1120,267)"><circle r="15" fill="none" stroke="#ef4444" stroke-width="2"/><circle r="6" fill="#ef4444"/><line x1="-20" y1="0" x2="-16" y2="0" stroke="#ef4444" stroke-width="2"/><line x1="16" y1="0" x2="20" y2="0" stroke="#ef4444" stroke-width="2"/><line x1="0" y1="-20" x2="0" y2="-16" stroke="#ef4444" stroke-width="2"/><line x1="0" y1="16" x2="0" y2="20" stroke="#ef4444" stroke-width="2"/></g>
+  </g>
+  <!-- Card 4: Shadow AI -->
+  <g>
+    <rect x="520" y="304" width="640" height="58" rx="10" fill="url(#gT)" stroke="#334155"/>
+    <!-- server + wifi -->
+    <rect x="538" y="318" width="30" height="30" rx="4" fill="#0c121d" stroke="#94a3b8"/>
+    <circle cx="545" cy="326" r="2" fill="#94a3b8"/><line x1="551" y1="326" x2="562" y2="326" stroke="#94a3b8" stroke-width="2"/>
+    <path d="M574 340 a8 8 0 0 1 12 0" fill="none" stroke="#f59e0b" stroke-width="1.6"/>
+    <path d="M577 344 a4 4 0 0 1 6 0" fill="none" stroke="#f59e0b" stroke-width="1.6"/>
+    <text x="600" y="330" font-size="15" font-weight="700" fill="#e8edf4">Shadow AI (Ollama · MCP · vLLM)</text>
+    <text x="600" y="349" font-size="12" fill="#fca5a5">exposed and uncontrolled → discover</text>
+    <g transform="translate(1120,333)"><circle r="15" fill="none" stroke="#ef4444" stroke-width="2"/><circle r="6" fill="#ef4444"/><line x1="-20" y1="0" x2="-16" y2="0" stroke="#ef4444" stroke-width="2"/><line x1="16" y1="0" x2="20" y2="0" stroke="#ef4444" stroke-width="2"/><line x1="0" y1="-20" x2="0" y2="-16" stroke="#ef4444" stroke-width="2"/><line x1="0" y1="16" x2="0" y2="20" stroke="#ef4444" stroke-width="2"/></g>
+  </g>
+
+  <!-- value pillars -->
+  <g>
+    <rect x="40" y="398" width="270" height="132" rx="12" fill="url(#gT)" stroke="#2a3648"/>
+    <circle cx="72" cy="436" r="13" fill="none" stroke="#2bc0ff" stroke-width="2.5"/><line x1="82" y1="446" x2="94" y2="458" stroke="#2bc0ff" stroke-width="2.5"/>
+    <text x="64" y="472" font-size="15" font-weight="700" fill="#e8edf4">Discover the invisible</text>
+    <text x="64" y="494" font-size="12" fill="#9aa7b2">finds exposed shadow AI</text>
+    <text x="64" y="512" font-size="12" fill="#9aa7b2">before the attacker</text>
+  </g>
+  <g>
+    <rect x="325" y="398" width="270" height="132" rx="12" fill="url(#gT)" stroke="#2a3648"/>
+    <g transform="translate(69,436)"><circle r="13" fill="none" stroke="#ef4444" stroke-width="2.5"/><circle r="4" fill="#ef4444"/></g>
+    <text x="349" y="472" font-size="15" font-weight="700" fill="#e8edf4">Attack LLMs and agents</text>
+    <text x="349" y="494" font-size="12" fill="#9aa7b2">jailbreaks + OWASP Agentic</text>
+    <text x="349" y="512" font-size="12" fill="#9aa7b2">in a single tool</text>
+  </g>
+  <g>
+    <rect x="610" y="398" width="270" height="132" rx="12" fill="url(#gT)" stroke="#2a3648"/>
+    <rect x="642" y="424" width="24" height="28" rx="3" fill="#0c121d" stroke="#22c55e" stroke-width="2"/>
+    <path d="M647 438 l4 4 l8 -9" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="634" y="472" font-size="15" font-weight="700" fill="#e8edf4">Evidence + severity</text>
+    <text x="634" y="494" font-size="12" fill="#9aa7b2">report with OWASP/ATLAS mapping</text>
+    <text x="634" y="512" font-size="12" fill="#9aa7b2">and remediation</text>
+  </g>
+  <g>
+    <rect x="895" y="398" width="265" height="132" rx="12" fill="url(#gT)" stroke="#2a3648"/>
+    <path d="M927 422 l14 5 v10 c0 9 -6 15 -14 19 c-8 -4 -14 -10 -14 -19 v-10 z" fill="none" stroke="#f59e0b" stroke-width="2.2"/>
+    <path d="M921 439 l4 4 l8 -8" fill="none" stroke="#f59e0b" stroke-width="2.2" stroke-linecap="round"/>
+    <text x="919" y="472" font-size="15" font-weight="700" fill="#e8edf4">Authorized and safe</text>
+    <text x="919" y="494" font-size="12" fill="#9aa7b2">scope.yaml + benign canaries</text>
+    <text x="919" y="512" font-size="12" fill="#9aa7b2">measure, don't weaponize</text>
+  </g>
+</svg>

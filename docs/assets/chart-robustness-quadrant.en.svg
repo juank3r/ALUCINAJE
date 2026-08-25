@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="560" viewBox="0 0 1100 560" role="img" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+  <title>Robustness quadrant: attack success rate vs over-refusal</title>
+  <desc>2D scatter: X axis over-refusal (benign), Y axis attack success rate (harmful). The target is the bottom-left corner (safe and useful).</desc>
+  <defs>
+    <linearGradient id="gA" x1="0" x2="1">
+      <stop offset="0" stop-color="#7b2ff7"/>
+      <stop offset="1" stop-color="#2bc0ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1100" height="560" fill="#0f1724"/>
+
+  <text x="48" y="46" font-size="26" font-weight="700" fill="url(#gA)">A model's robustness posture</text>
+  <text x="48" y="72" font-size="13.5" fill="#9aa7b2">Y axis: complies with jailbreaks (insecure) · X axis: refuses the legitimate (useless) · target = bottom-left corner</text>
+  <text x="48" y="94" font-size="12.5" fill="#f59e0b">◆ EXAMPLE data — the real ones are produced by tools/eval_jailbreaks.py (--dataset jbb, and --benign)</text>
+
+  <!-- quadrant backgrounds : plot x 220..660, y 60..500 ; dividers x=352 (0.3), y=368 (0.3) -->
+  <rect x="220" y="60"  width="132" height="308" fill="#ef4444" opacity="0.10"/>
+  <rect x="352" y="60"  width="308" height="308" fill="#b91c1c" opacity="0.14"/>
+  <rect x="220" y="368" width="132" height="132" fill="#22c55e" opacity="0.12"/>
+  <rect x="352" y="368" width="308" height="132" fill="#f59e0b" opacity="0.10"/>
+
+  <!-- quadrant labels -->
+  <text x="286" y="210" text-anchor="middle" font-size="12.5" fill="#f87171">Insecure</text>
+  <text x="286" y="228" text-anchor="middle" font-size="11.5" fill="#9aa7b2">(uncensored)</text>
+  <text x="506" y="205" text-anchor="middle" font-size="12.5" fill="#fca5a5">Insecure and useless</text>
+  <text x="286" y="440" text-anchor="middle" font-size="12.5" fill="#4ade80">Safe and useful ✓</text>
+  <text x="506" y="440" text-anchor="middle" font-size="12.5" fill="#fbbf24">Useless (over-refusal)</text>
+
+  <!-- axes -->
+  <line x1="220" y1="500" x2="660" y2="500" stroke="#334155" stroke-width="1.5"/>
+  <line x1="220" y1="60" x2="220" y2="500" stroke="#334155" stroke-width="1.5"/>
+  <line x1="352" y1="60" x2="352" y2="500" stroke="#475569" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="220" y1="368" x2="660" y2="368" stroke="#475569" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="440" y="528" text-anchor="middle" font-size="13" fill="#cbd5e1">over-refusal (benign) →</text>
+  <text x="200" y="60" text-anchor="end" font-size="11.5" fill="#64748b">1.0</text>
+  <text x="200" y="504" text-anchor="end" font-size="11.5" fill="#64748b">0</text>
+  <text x="660" y="518" text-anchor="middle" font-size="11.5" fill="#64748b">1.0</text>
+  <g transform="translate(150,300) rotate(-90)"><text text-anchor="middle" font-size="13" fill="#cbd5e1">attack success rate (harmful) →</text></g>
+
+  <!-- points -->
+  <!-- Base alineado: x=272.8 y=464.8 -->
+  <circle cx="272.8" cy="464.8" r="9" fill="#22c55e" stroke="#0f1724" stroke-width="2"/>
+  <text x="286" y="461" font-size="12.5" fill="#e8edf4">Aligned base</text>
+  <text x="286" y="477" font-size="11" fill="#9aa7b2">ASR 0.08 · over 0.12</text>
+  <!-- Abliterado: x=228.8 y=126 -->
+  <circle cx="228.8" cy="126" r="9" fill="#ef4444" stroke="#0f1724" stroke-width="2"/>
+  <text x="243" y="122" font-size="12.5" fill="#e8edf4">Abliterated (Heretic)</text>
+  <text x="243" y="138" font-size="11" fill="#fca5a5">ASR 0.85 · over 0.02</text>
+  <!-- Sobre-filtrado: x=484 y=478 -->
+  <circle cx="484" cy="478" r="9" fill="#f59e0b" stroke="#0f1724" stroke-width="2"/>
+  <text x="497" y="474" font-size="12.5" fill="#e8edf4">Over-filtered</text>
+  <text x="497" y="490" font-size="11" fill="#fbbf24">ASR 0.05 · over 0.60</text>
+  <!-- Roto: x=462 y=214 -->
+  <circle cx="462" cy="214" r="9" fill="#b91c1c" stroke="#0f1724" stroke-width="2"/>
+  <text x="476" y="210" font-size="12.5" fill="#e8edf4">Broken model</text>
+  <text x="476" y="226" font-size="11" fill="#fca5a5">ASR 0.65 · over 0.55</text>
+
+  <!-- reading panel -->
+  <g transform="translate(720,120)">
+    <rect x="0" y="0" width="330" height="300" rx="12" fill="#0c121d" stroke="#1f2937"/>
+    <text x="20" y="34" font-size="15" font-weight="700" fill="#e8edf4">How to read it</text>
+    <text x="20" y="64" font-size="12.5" fill="#cbd5e1">An uncensored (abliterated) model</text>
+    <text x="20" y="82" font-size="12.5" fill="#cbd5e1">leaves a trace: high ASR + over-refusal</text>
+    <text x="20" y="100" font-size="12.5" fill="#cbd5e1">near zero → top-left corner.</text>
+    <text x="20" y="130" font-size="12.5" fill="#cbd5e1">The defensive target is the</text>
+    <text x="20" y="148" font-size="12.5" fill="#4ade80">bottom-left corner (safe and useful).</text>
+    <text x="20" y="182" font-size="12.5" fill="#9aa7b2">Measure a target:</text>
+    <text x="20" y="204" font-size="11.5" fill="#2bc0ff">eval_jailbreaks.py --dataset jbb</text>
+    <text x="20" y="224" font-size="11.5" fill="#2bc0ff">eval_jailbreaks.py --dataset jbb --benign</text>
+    <text x="20" y="256" font-size="12" fill="#9aa7b2">Details in docs/THREAT_MODEL.md</text>
+    <text x="20" y="276" font-size="12" fill="#9aa7b2">and docs/METRICS.md</text>
+  </g>
+</svg>

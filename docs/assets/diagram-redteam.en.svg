@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+  <title>Red team engagement workflow</title>
+  <desc>Authorized scope, read-only discovery, connection, attack on LLMs and agents with canaries, and report.</desc>
+  <defs>
+    <linearGradient id="gA" x1="0" x2="1"><stop offset="0" stop-color="#7b2ff7"/><stop offset="1" stop-color="#2bc0ff"/></linearGradient>
+    <linearGradient id="gT" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#1b2436"/><stop offset="1" stop-color="#141b29"/></linearGradient>
+    <linearGradient id="gOut" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#3b1d6e"/><stop offset="1" stop-color="#0e3a52"/></linearGradient>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2bc0ff"/></marker>
+  </defs>
+  <rect width="1200" height="520" fill="#0f1724"/>
+
+  <text x="40" y="50" font-size="28" font-weight="700" fill="url(#gA)">Red team engagement workflow</text>
+  <text x="40" y="78" font-size="14.5" fill="#9aa7b2">From authorization to report — measure and demonstrate safely, don't weaponize</text>
+
+  <!-- Scope gate -->
+  <g>
+    <rect x="40" y="120" width="180" height="160" rx="12" fill="#20182e" stroke="#f59e0b" stroke-width="1.6"/>
+    <text x="130" y="150" text-anchor="middle" font-size="16" font-weight="700" fill="#fbbf24">1 · Scope</text>
+    <text x="130" y="176" text-anchor="middle" font-size="12" fill="#9aa7b2">Authorized RoE</text>
+    <text x="130" y="196" text-anchor="middle" font-size="12" fill="#cbd5e1">only in-scope targets</text>
+    <text x="130" y="220" text-anchor="middle" font-size="11.5" fill="#f59e0b">scope.yaml · scope.py</text>
+    <text x="130" y="252" text-anchor="middle" font-size="11" fill="#64748b">out of scope</text>
+    <text x="130" y="268" text-anchor="middle" font-size="11" fill="#f87171">= REJECTED</text>
+  </g>
+  <!-- Discover -->
+  <g>
+    <rect x="250" y="120" width="180" height="160" rx="12" fill="url(#gT)" stroke="#334155" stroke-width="1.5"/>
+    <text x="340" y="150" text-anchor="middle" font-size="16" font-weight="700" fill="#e8edf4">2 · Discover</text>
+    <text x="340" y="176" text-anchor="middle" font-size="12" fill="#9aa7b2">read-only fingerprint</text>
+    <text x="340" y="196" text-anchor="middle" font-size="12" fill="#cbd5e1">Ollama · vLLM · MCP…</text>
+    <text x="340" y="220" text-anchor="middle" font-size="11.5" fill="#2bc0ff">discover.py → inventory</text>
+    <text x="340" y="252" text-anchor="middle" font-size="11" fill="#64748b">scoped · no CIDR</text>
+  </g>
+  <!-- Connect -->
+  <g>
+    <rect x="460" y="120" width="180" height="160" rx="12" fill="url(#gT)" stroke="#7b2ff7" stroke-width="1.5"/>
+    <text x="550" y="150" text-anchor="middle" font-size="16" font-weight="700" fill="#e8edf4">3 · Connect</text>
+    <text x="550" y="176" text-anchor="middle" font-size="12" fill="#9aa7b2">speaks the service's API</text>
+    <text x="550" y="196" text-anchor="middle" font-size="12" fill="#cbd5e1">Ollama · OpenAI · Anthropic</text>
+    <text x="550" y="220" text-anchor="middle" font-size="11.5" fill="#2bc0ff">connectors.py</text>
+  </g>
+  <!-- Attack (split) -->
+  <g>
+    <rect x="670" y="120" width="230" height="160" rx="12" fill="url(#gT)" stroke="#ef4444" stroke-width="1.6"/>
+    <text x="785" y="150" text-anchor="middle" font-size="16" font-weight="700" fill="#f87171">4 · Attack</text>
+    <rect x="686" y="164" width="198" height="46" rx="8" fill="#0c121d" stroke="#334155"/>
+    <text x="785" y="184" text-anchor="middle" font-size="12.5" fill="#e8edf4">LLM: JBB (ASR, over-refusal)</text>
+    <text x="785" y="202" text-anchor="middle" font-size="11" fill="#2bc0ff">eval_jailbreaks.py</text>
+    <rect x="686" y="216" width="198" height="52" rx="8" fill="#0c121d" stroke="#334155"/>
+    <text x="785" y="236" text-anchor="middle" font-size="12.5" fill="#e8edf4">Agents: OWASP Agentic</text>
+    <text x="785" y="252" text-anchor="middle" font-size="11" fill="#fca5a5">injection · tool misuse · exfil</text>
+    <text x="785" y="264" text-anchor="middle" font-size="10.5" fill="#2bc0ff">agent_probes.py · canaries</text>
+  </g>
+  <!-- Report -->
+  <g>
+    <rect x="930" y="120" width="230" height="160" rx="12" fill="url(#gOut)" stroke="url(#gA)" stroke-width="2"/>
+    <text x="1045" y="150" text-anchor="middle" font-size="16" font-weight="700" fill="#e8edf4">5 · Report</text>
+    <text x="1045" y="176" text-anchor="middle" font-size="12" fill="#dbe4ee">HTML + JSON</text>
+    <text x="1045" y="196" text-anchor="middle" font-size="12" fill="#dbe4ee">severity · reproduction</text>
+    <text x="1045" y="216" text-anchor="middle" font-size="12" fill="#dbe4ee">OWASP/ATLAS mapping</text>
+    <text x="1045" y="238" text-anchor="middle" font-size="12" fill="#dbe4ee">+ remediation</text>
+    <text x="1045" y="262" text-anchor="middle" font-size="11.5" fill="#2bc0ff">report.py</text>
+  </g>
+
+  <!-- arrows -->
+  <line x1="220" y1="200" x2="248" y2="200" stroke="#2bc0ff" stroke-width="2.4" marker-end="url(#ar)"/>
+  <line x1="430" y1="200" x2="458" y2="200" stroke="#2bc0ff" stroke-width="2.4" marker-end="url(#ar)"/>
+  <line x1="640" y1="200" x2="668" y2="200" stroke="#2bc0ff" stroke-width="2.4" marker-end="url(#ar)"/>
+  <line x1="900" y1="200" x2="928" y2="200" stroke="#2bc0ff" stroke-width="2.4" marker-end="url(#ar)"/>
+
+  <!-- red lines footer -->
+  <g transform="translate(40,320)">
+    <rect x="0" y="0" width="1120" height="150" rx="12" fill="#0c121d" stroke="#1f2937"/>
+    <text x="20" y="30" font-size="15" font-weight="700" fill="#f87171">Red lines</text>
+    <text x="20" y="58" font-size="12.5" fill="#cbd5e1">• Only authorized targets (scope.yaml) — no mass Internet scanning.</text>
+    <text x="20" y="80" font-size="12.5" fill="#cbd5e1">• Read-only discovery · PoC with benign canaries (no real exfiltration or destructive actions).</text>
+    <text x="20" y="102" font-size="12.5" fill="#cbd5e1">• Measure and recommend, don't weaponize · the target's raw output is not stored · no PII/secrets.</text>
+    <text x="20" y="124" font-size="12.5" fill="#cbd5e1">• Responsible disclosure.</text>
+  </g>
+</svg>

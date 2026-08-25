@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="grad" x1="0" x2="1">
+      <stop offset="0" stop-color="#7b2ff7"/>
+      <stop offset="1" stop-color="#2bc0ff"/>
+    </linearGradient>
+    <linearGradient id="gradSoft" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#1b2436"/>
+      <stop offset="1" stop-color="#141b29"/>
+    </linearGradient>
+    <linearGradient id="gradOut" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#3b1d6e"/>
+      <stop offset="1" stop-color="#0e3a52"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2bc0ff"/>
+    </marker>
+    <marker id="arrowLoop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="600" fill="#0f1724"/>
+
+  <text x="40" y="52" font-size="30" font-weight="700" fill="url(#grad)">Pipeline end-to-end</text>
+  <text x="40" y="80" font-size="15" fill="#9aa7b2">From sources to use case: how the repos + the jailbreak dataset come together and produce a measurable output</text>
+
+  <!-- Stage helper: boxes 150 wide, y=140 h=110 -->
+  <!-- 1 Sources -->
+  <g>
+    <rect x="40" y="140" width="150" height="120" rx="12" fill="url(#gradSoft)" stroke="#334155" stroke-width="1.5"/>
+    <text x="115" y="168" text-anchor="middle" font-size="15" font-weight="700" fill="#e8edf4">1 · Sources</text>
+    <text x="115" y="192" text-anchor="middle" font-size="11.5" fill="#cbd5e1">verazuo/jailbreak_llms</text>
+    <text x="115" y="210" text-anchor="middle" font-size="11.5" fill="#cbd5e1">Goochbeater/Spiritual</text>
+    <text x="115" y="234" text-anchor="middle" font-size="11" fill="#64748b">(cited, not copied)</text>
+  </g>
+  <!-- 2 Import/Sanitize -->
+  <g>
+    <rect x="230" y="140" width="150" height="120" rx="12" fill="#161f16" stroke="#22c55e" stroke-width="1.6"/>
+    <text x="305" y="168" text-anchor="middle" font-size="15" font-weight="700" fill="#86efac">2 · Import</text>
+    <text x="305" y="192" text-anchor="middle" font-size="11.5" fill="#cbd5e1">extract + sanitize</text>
+    <text x="305" y="210" text-anchor="middle" font-size="11.5" fill="#cbd5e1">anti-jailbreak filter</text>
+    <text x="305" y="234" text-anchor="middle" font-size="11" fill="#86efac">import_and_sanitize.py</text>
+  </g>
+  <!-- 3 HITL / PR -->
+  <g>
+    <rect x="420" y="140" width="150" height="120" rx="12" fill="#20182e" stroke="#f59e0b" stroke-width="1.6"/>
+    <text x="495" y="168" text-anchor="middle" font-size="15" font-weight="700" fill="#fbbf24">3 · Review</text>
+    <text x="495" y="192" text-anchor="middle" font-size="11.5" fill="#cbd5e1">human approves</text>
+    <text x="495" y="210" text-anchor="middle" font-size="11.5" fill="#cbd5e1">→ PR to seed</text>
+    <text x="495" y="234" text-anchor="middle" font-size="11" fill="#f59e0b">prepare_pr_from_approved</text>
+  </g>
+  <!-- 4 Generate -->
+  <g>
+    <rect x="610" y="140" width="150" height="120" rx="12" fill="url(#gradSoft)" stroke="#7b2ff7" stroke-width="1.5"/>
+    <text x="685" y="168" text-anchor="middle" font-size="15" font-weight="700" fill="#e8edf4">4 · Generate</text>
+    <text x="685" y="192" text-anchor="middle" font-size="11.5" fill="#cbd5e1">paraphrasing · permut.</text>
+    <text x="685" y="210" text-anchor="middle" font-size="11.5" fill="#cbd5e1">--factor --min-len</text>
+    <text x="685" y="234" text-anchor="middle" font-size="11" fill="#2bc0ff">safe_corpus_generator.py</text>
+  </g>
+  <!-- 5 Test -->
+  <g>
+    <rect x="800" y="140" width="150" height="120" rx="12" fill="url(#gradSoft)" stroke="#7b2ff7" stroke-width="1.5"/>
+    <text x="875" y="168" text-anchor="middle" font-size="15" font-weight="700" fill="#e8edf4">5 · Test</text>
+    <text x="875" y="192" text-anchor="middle" font-size="11.5" fill="#cbd5e1">mock / endpoint</text>
+    <text x="875" y="210" text-anchor="middle" font-size="11.5" fill="#cbd5e1">normalized JSON</text>
+    <text x="875" y="234" text-anchor="middle" font-size="11" fill="#2bc0ff">run_tests.py</text>
+  </g>
+  <!-- 6 Eval -->
+  <g>
+    <rect x="990" y="140" width="170" height="120" rx="12" fill="url(#gradSoft)" stroke="#7b2ff7" stroke-width="1.5"/>
+    <text x="1075" y="168" text-anchor="middle" font-size="15" font-weight="700" fill="#e8edf4">6 · Evaluate</text>
+    <text x="1075" y="192" text-anchor="middle" font-size="11.5" fill="#cbd5e1">refusal rate</text>
+    <text x="1075" y="210" text-anchor="middle" font-size="11.5" fill="#cbd5e1">latency · toxicity</text>
+    <text x="1075" y="234" text-anchor="middle" font-size="11" fill="#2bc0ff">results/*.json · metrics</text>
+  </g>
+
+  <!-- arrows between stages -->
+  <line x1="190" y1="200" x2="228" y2="200" stroke="#2bc0ff" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <line x1="380" y1="200" x2="418" y2="200" stroke="#2bc0ff" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <line x1="570" y1="200" x2="608" y2="200" stroke="#2bc0ff" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <line x1="760" y1="200" x2="798" y2="200" stroke="#2bc0ff" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <line x1="950" y1="200" x2="988" y2="200" stroke="#2bc0ff" stroke-width="2.2" marker-end="url(#arrow)"/>
+
+  <!-- artifacts row under stages -->
+  <text x="305" y="292" text-anchor="middle" font-size="11" fill="#64748b">phrases_imported_sanitized.txt</text>
+  <text x="685" y="292" text-anchor="middle" font-size="11" fill="#64748b">phrases_expanded.txt</text>
+  <text x="875" y="292" text-anchor="middle" font-size="11" fill="#64748b">results_*.json</text>
+  <text x="1075" y="292" text-anchor="middle" font-size="11" fill="#64748b">summary.json · *.csv</text>
+
+  <!-- Iterate loop -->
+  <path d="M1075,260 L1075,330 L685,330 L685,262" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrowLoop)"/>
+  <text x="880" y="323" text-anchor="middle" font-size="12.5" fill="#fbbf24">7 · Iterate: tune generator and filters based on metrics</text>
+
+  <!-- Output / use case -->
+  <g>
+    <rect x="330" y="380" width="540" height="140" rx="14" fill="url(#gradOut)" stroke="url(#grad)" stroke-width="2"/>
+    <text x="600" y="414" text-anchor="middle" font-size="19" font-weight="700" fill="#e8edf4">Output · Use case</text>
+    <text x="600" y="444" text-anchor="middle" font-size="13.5" fill="#dbe4ee">Robustness report: which variants trigger out-of-policy responses,</text>
+    <text x="600" y="466" text-anchor="middle" font-size="13.5" fill="#dbe4ee">correct refusal rate, consistency across paraphrases and latency.</text>
+    <text x="600" y="494" text-anchor="middle" font-size="12.5" fill="#9fb4c7">→ prioritize mitigations and harden controls (responsible disclosure)</text>
+  </g>
+  <!-- Eval -> Output -->
+  <path d="M1075,260 L1075,450 L872,450" fill="none" stroke="#2bc0ff" stroke-width="2.2" marker-end="url(#arrow)"/>
+
+  <!-- Legend -->
+  <g transform="translate(40,540)">
+    <line x1="0" y1="14" x2="40" y2="14" stroke="#2bc0ff" stroke-width="2.2" marker-end="url(#arrow)"/>
+    <text x="50" y="19" font-size="12.5" fill="#cbd5e1">flow</text>
+    <line x1="140" y1="14" x2="180" y2="14" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrowLoop)"/>
+    <text x="190" y="19" font-size="12.5" fill="#cbd5e1">iteration / human control</text>
+    <text x="430" y="19" font-size="11.5" fill="#64748b">Source: docs/PIPELINE.md · docs/USAGE.md · methodology.md · .github/workflows</text>
+  </g>
+</svg>
