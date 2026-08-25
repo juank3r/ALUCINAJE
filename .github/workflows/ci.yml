@@ -21,6 +21,8 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Eval self-test (no network, no payloads)
         run: python tools/eval_jailbreaks.py --self-test
+      - name: Agent probes self-test (no network, canaries only)
+        run: python tools/agent_probes.py --self-test
       - name: Generate expanded phrases
         run: |
           python safe_corpus_generator.py --seed phrases_seed.txt --out phrases_expanded.txt --factor 3 --min-len 10
