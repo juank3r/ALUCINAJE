@@ -178,6 +178,8 @@ ALUCINAJE/
 
 | Doc | Contenido |
 |---|---|
+| [RED_TEAM](docs/RED_TEAM.md) | Reglas de enganche + workflow del engagement |
+| [AGENTS](docs/AGENTS.md) | Superficie de ataque de agentes (OWASP Agentic) |
 | [ARCHITECTURE](docs/ARCHITECTURE.md) | Componentes y flujo de datos |
 | [PIPELINE](docs/PIPELINE.md) | Etapas del pipeline |
 | [DATA_SOURCES](docs/DATA_SOURCES.md) | Procedencia, licencias, estadísticas |
