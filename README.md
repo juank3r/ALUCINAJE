@@ -55,14 +55,7 @@ un enfoque responsable que **no** produce ni difunde jailbreaks.
 
 ## Características
 
-| | Característica | Detalle |
-|---|---|---|
-| 🌱 | **Corpus seed-driven** | [`phrases_seed.txt`](phrases_seed.txt) curado a mano, solo contenido seguro |
-| 🧬 | **Generador seguro** | [`safe_corpus_generator.py`](safe_corpus_generator.py): parafraseo + permutaciones con filtros |
-| 🛡️ | **Filtro anti-jailbreak** | descarta payloads/NSFW; documentado en [`docs/FILTERING.md`](docs/FILTERING.md) |
-| 🎯 | **Harness de evaluación** | [`tools/eval_jailbreaks.py`](tools/eval_jailbreaks.py) mide robustez frente a jailbreaks reales |
-| 📊 | **Métricas + informe** | tasa de rechazo, fuga, latencia por categoría |
-| 🔁 | **Reproducible + CI** | tests del filtro, self-test y run mock en cada PR |
+![Características de ALUCINAJE](docs/assets/diagram-features.svg)
 
 ## Arquitectura
 
