@@ -25,6 +25,8 @@ jobs:
         run: python tools/agent_probes.py --self-test
       - name: Report self-test (offline)
         run: python tools/report.py --self-test
+      - name: Discover self-test (offline, no network)
+        run: python tools/discover.py --self-test
       - name: Generate expanded phrases
         run: |
           python safe_corpus_generator.py --seed phrases_seed.txt --out phrases_expanded.txt --factor 3 --min-len 10
