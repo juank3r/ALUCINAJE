@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="540" viewBox="0 0 1200 540" role="img" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+  <title>La geometría de la dirección de rechazo</title>
+  <desc>En el espacio de activaciones, los prompts dañinos e inofensivos forman dos grupos separados por una dirección de rechazo r. Al ortogonalizar (abliterate) se elimina esa dirección y el modelo deja de poder separar rechazo de cumplimiento.</desc>
+  <defs>
+    <linearGradient id="gA" x1="0" x2="1">
+      <stop offset="0" stop-color="#7b2ff7"/>
+      <stop offset="1" stop-color="#2bc0ff"/>
+    </linearGradient>
+    <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/>
+    </marker>
+    <marker id="arc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2bc0ff"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="540" fill="#0f1724"/>
+
+  <text x="40" y="50" font-size="26" font-weight="700" fill="url(#gA)">La geometría de la "dirección de rechazo"</text>
+  <text x="40" y="77" font-size="14" fill="#9aa7b2">En el espacio de activaciones, el rechazo vive a lo largo de un vector <tspan fill="#f59e0b" font-weight="700">r</tspan>. Ablarlo lo elimina.</text>
+
+  <!-- LEFT panel: before -->
+  <g>
+    <rect x="40" y="100" width="520" height="380" rx="14" fill="#0c121d" stroke="#334155"/>
+    <text x="60" y="130" font-size="15" font-weight="700" fill="#e8edf4">Antes · el modelo separa los grupos</text>
+    <!-- abstract axes -->
+    <line x1="80" y1="450" x2="530" y2="450" stroke="#1f2937" stroke-width="1"/>
+    <line x1="80" y1="450" x2="80" y2="150" stroke="#1f2937" stroke-width="1"/>
+    <!-- harmless cluster (green) lower-left -->
+    <g fill="#22c55e">
+      <circle cx="150" cy="400" r="6"/><circle cx="180" cy="415" r="6"/><circle cx="130" cy="380" r="6"/>
+      <circle cx="175" cy="388" r="6"/><circle cx="205" cy="405" r="6"/><circle cx="160" cy="425" r="6"/>
+    </g>
+    <circle cx="168" cy="402" r="9" fill="none" stroke="#4ade80" stroke-width="2.5"/>
+    <text x="120" y="452" font-size="12" fill="#4ade80">μ inofensivos</text>
+    <!-- harmful cluster (red) upper-right -->
+    <g fill="#ef4444">
+      <circle cx="420" cy="220" r="6"/><circle cx="450" cy="235" r="6"/><circle cx="400" cy="200" r="6"/>
+      <circle cx="445" cy="205" r="6"/><circle cx="470" cy="225" r="6"/><circle cx="430" cy="248" r="6"/>
+    </g>
+    <circle cx="438" cy="222" r="9" fill="none" stroke="#f87171" stroke-width="2.5"/>
+    <text x="440" y="188" font-size="12" fill="#f87171">μ dañinos</text>
+    <!-- refusal direction r -->
+    <line x1="168" y1="402" x2="438" y2="222" stroke="#f59e0b" stroke-width="3.5" marker-end="url(#ar2)"/>
+    <text x="292" y="300" font-size="16" font-weight="700" fill="#fbbf24">r</text>
+    <text x="255" y="330" font-size="12" fill="#fcd9a6">= μ(dañinos) − μ(inofensivos)</text>
+    <text x="60" y="470" font-size="12" fill="#9aa7b2">A lo largo de <tspan fill="#fbbf24">r</tspan> el modelo "decide" rechazar.</text>
+  </g>
+
+  <!-- middle arrow -->
+  <line x1="575" y1="290" x2="625" y2="290" stroke="#2bc0ff" stroke-width="3" marker-end="url(#arc)"/>
+  <text x="600" y="275" text-anchor="middle" font-size="12" font-weight="700" fill="#2bc0ff">ablate</text>
+  <text x="600" y="315" text-anchor="middle" font-size="11" fill="#9aa7b2">W ⟂ r</text>
+
+  <!-- RIGHT panel: after -->
+  <g>
+    <rect x="640" y="100" width="520" height="380" rx="14" fill="#0c121d" stroke="#334155"/>
+    <text x="660" y="130" font-size="15" font-weight="700" fill="#e8edf4">Después · r eliminada, grupos colapsados</text>
+    <line x1="680" y1="450" x2="1130" y2="450" stroke="#1f2937" stroke-width="1"/>
+    <line x1="680" y1="450" x2="680" y2="150" stroke="#1f2937" stroke-width="1"/>
+    <!-- both clusters collapsed onto the plane orthogonal to r: mixed band -->
+    <g>
+      <circle cx="770" cy="330" r="6" fill="#22c55e"/><circle cx="810" cy="322" r="6" fill="#ef4444"/>
+      <circle cx="850" cy="335" r="6" fill="#22c55e"/><circle cx="890" cy="326" r="6" fill="#ef4444"/>
+      <circle cx="930" cy="333" r="6" fill="#22c55e"/><circle cx="970" cy="324" r="6" fill="#ef4444"/>
+      <circle cx="1010" cy="332" r="6" fill="#22c55e"/><circle cx="1050" cy="327" r="6" fill="#ef4444"/>
+    </g>
+    <line x1="760" y1="336" x2="1060" y2="320" stroke="#475569" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <text x="770" y="300" font-size="12" fill="#9aa7b2">dañinos e inofensivos ya no se distinguen en r</text>
+    <!-- struck-out r -->
+    <line x1="770" y1="420" x2="960" y2="290" stroke="#ef4444" stroke-width="3" opacity="0.5"/>
+    <line x1="770" y1="290" x2="960" y2="420" stroke="#ef4444" stroke-width="3"/>
+    <text x="980" y="360" font-size="15" font-weight="700" fill="#f87171">r ✗</text>
+    <text x="660" y="470" font-size="12" fill="#9aa7b2">Sin componente <tspan fill="#f87171">r</tspan>, el modelo no "puede" rechazar → cumple.</text>
+  </g>
+</svg>

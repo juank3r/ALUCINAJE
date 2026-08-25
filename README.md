@@ -128,7 +128,22 @@ rechazar lo legítimo (inútil). El objetivo es la esquina inferior izquierda:
 Para pentesters: el harness apunta a **cualquier** endpoint, así que sirve para **medir la postura de un
 modelo objetivo** — incluido detectar un modelo **abliterado** (safety quitada a nivel de pesos, p. ej.
 con [Heretic](https://github.com/p-e-w/heretic)): huella típica = `attack_success_rate` alto +
-`overrefusal_rate` casi nulo. Detalle y clases de amenaza en **[`docs/THREAT_MODEL.md`](docs/THREAT_MODEL.md)**.
+`overrefusal_rate` casi nulo.
+
+### ¿Qué es la abliteration?
+
+Es un jailbreak **a nivel de pesos** (no de prompt): en vez de engañar al modelo con un texto, se
+**modifica el modelo** para eliminar su capacidad de rechazar. Así funciona:
+
+![Cómo funciona la abliteration](docs/assets/diagram-abliteration.svg)
+
+La intuición geométrica: el rechazo vive a lo largo de una dirección `r` en el espacio de activaciones;
+ablarla colapsa los grupos y el modelo deja de poder distinguir "rechazar" de "cumplir":
+
+![La geometría de la dirección de rechazo](docs/assets/diagram-refusal-direction.svg)
+
+> ALUCINAJE **documenta y mide** esta amenaza; **no** implementa la técnica. Clases de amenaza completas
+> en **[`docs/THREAT_MODEL.md`](docs/THREAT_MODEL.md)**.
 
 ## Quick start
 

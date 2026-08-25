@@ -40,6 +40,10 @@ Cómo funciona (resumen técnico para el pentester):
 3. **Optimización (Optuna/TPE)**: busca pesos de ablación por capa co-minimizando (a) nº de rechazos en
    prompts dañinos y (b) **KL-divergencia** en prompts inofensivos (para no degradar la capacidad).
 
+![Cómo funciona la abliteration](assets/diagram-abliteration.svg)
+
+![La geometría de la dirección de rechazo](assets/diagram-refusal-direction.svg)
+
 Por qué importa al pentester:
 - Un modelo open-weight desplegado por un tercero **puede haber sido abliterado**. Sus salvaguardas
   pueden estar ausentes aunque el "system prompt" diga lo contrario.
