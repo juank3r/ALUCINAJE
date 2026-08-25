@@ -50,6 +50,9 @@ try:
 except Exception:  # pragma: no cover - requests is optional for --self-test
     requests = None
 
+# Allow importing sibling tools (connectors, scope) whether run as a script or loaded by path.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 # ---- Dataset sources (downloaded at run time; never committed) ----------------------------------
 VERAZUO_URL = (
     "https://raw.githubusercontent.com/verazuo/jailbreak_llms/main/"
@@ -203,13 +206,28 @@ def aggregate(classifications: list, kind: str) -> dict:
     return metrics
 
 
+def _make_caller(endpoint: str, service: str, model: str, api_key: str, scope_path: str):
+    """Return a fn(text)->res. Enforces scope (RoE) up front; dispatches by service."""
+    if scope_path:
+        import scope as scopemod  # sibling tool
+        sc = scopemod.load_scope(scope_path)
+        scopemod.require_in_scope(endpoint, sc)  # refuses if endpoint not authorized
+    if service and service != "generic":
+        import connectors  # sibling tool
+        return lambda text: connectors.query(endpoint, text, service=service, model=model,
+                                              api_key=api_key)
+    return lambda text: call_endpoint(endpoint, text)
+
+
 def run(dataset: str, kind: str, limit: int, out_dir: Path, endpoint: str,
-        judge_url: str, threat_model: str) -> dict:
+        judge_url: str, threat_model: str, service: str = "generic", model: str = None,
+        api_key: str = None, scope_path: str = None) -> dict:
     out_dir.mkdir(parents=True, exist_ok=True)
+    call = _make_caller(endpoint, service, model, api_key, scope_path)
     items = fetch_items(dataset, kind, limit)
     classifications = []
     for i, item in enumerate(items, start=1):
-        res = call_endpoint(endpoint, item["text"])
+        res = call(item["text"])
         if judge_url and kind != "benign":
             cls = classify_with_judge(judge_url, item["text"], res["response"])
         else:
@@ -227,6 +245,7 @@ def run(dataset: str, kind: str, limit: int, out_dir: Path, endpoint: str,
         "method_name": "ALUCINAJE-eval",
         "dataset": dataset,
         "kind": kind,
+        "service": service,
         "threat_model": threat_model,
         "judge": "llm-endpoint" if (judge_url and kind != "benign") else "lexical",
         "metrics": metrics,
@@ -299,6 +318,13 @@ def main():
                         default="black_box", help="Reported threat model (JBB artifact field)")
     parser.add_argument("--judge-endpoint", action="store_true",
                         help="Use JUDGE_ENDPOINT env var (LLM judge, JBB rubric) instead of lexical")
+    parser.add_argument("--service", choices=["generic", "ollama", "openai", "anthropic"],
+                        default="generic", help="Endpoint connector (default: generic {\"input\":...})")
+    parser.add_argument("--model", default=None, help="Model name for the connector, if applicable")
+    parser.add_argument("--api-key-env", default=None,
+                        help="Env var name holding the API key for the connector")
+    parser.add_argument("--scope", default=None,
+                        help="Path to scope.yaml (RoE); target is refused if not authorized")
     parser.add_argument("--self-test", action="store_true",
                         help="Validate metric logic without network/endpoint")
     args = parser.parse_args()
@@ -310,8 +336,10 @@ def main():
     if not endpoint:
         raise SystemExit("Set MODEL_ENDPOINT env var (or use --self-test).")
     judge_url = os.environ.get("JUDGE_ENDPOINT") if args.judge_endpoint else None
+    api_key = os.environ.get(args.api_key_env) if args.api_key_env else None
     kind = "benign" if args.benign else "harmful"
-    run(args.dataset, kind, args.limit, Path(args.out), endpoint, judge_url, args.threat_model)
+    run(args.dataset, kind, args.limit, Path(args.out), endpoint, judge_url, args.threat_model,
+        service=args.service, model=args.model, api_key=api_key, scope_path=args.scope)
 
 
 if __name__ == "__main__":
