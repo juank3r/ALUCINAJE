@@ -3,6 +3,8 @@
 ALUCINAJE se usa como framework de **red team autorizado** para evaluar la seguridad de sistemas de IA
 (endpoints LLM y agentes). Antes de tocar nada, lee las **líneas rojas**.
 
+![Workflow del engagement red team](assets/diagram-redteam.svg)
+
 ## Líneas rojas (no negociables)
 
 1. **Solo objetivos autorizados.** Todo pasa por `scope.yaml`. Fuera de scope se **rechaza**. Nada de
@@ -36,9 +38,10 @@ Las herramientas que tocan un objetivo aceptan `--scope scope.yaml` y **rechazan
 3. **Conectar** — `tools/connectors.py` habla la API del servicio (Ollama, OpenAI-compatible, Anthropic, genérico).
 4. **Atacar** —
    - LLM: `tools/eval_jailbreaks.py` (JBB: attack_success_rate, over-refusal, por categoría) — con `--service`/`--scope`.
-   - Agentes: `tools/agent_probes.py` (próximo) — inyección directa/indirecta, tool misuse, excessive agency,
-     fuga de secretos, canal de exfiltración (todo con canarios).
-5. **Informe** — `tools/report.py` (próximo) → HTML + JSON con severidad, reproducción y mapeo OWASP/ATLAS.
+   - Agentes: `tools/agent_probes.py` — inyección directa/indirecta, tool misuse, excessive agency,
+     fuga de secretos, canal de exfiltración (todo con canarios). Ver [`AGENTS.md`](AGENTS.md).
+5. **Informe** — `tools/report.py --in metrics --out report` → HTML + JSON con severidad, reproducción y
+   mapeo OWASP/ATLAS + recomendaciones de remediación.
 
 ## Ejemplo (autorizado)
 
