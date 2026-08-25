@@ -1,0 +1,23 @@
+# Scope / Rules-of-Engagement — PLANTILLA.
+# Uso:  cp scope.example.yaml scope.yaml   y edita scope.yaml con el alcance REAL autorizado.
+# (scope.yaml queda fuera de git para no versionar datos de cliente.)
+# Regla dura: solo se puede tocar lo listado en 'targets'. Todo lo demás se rechaza.
+
+engagement:
+  client: "ACME Corp (ejemplo)"
+  authorization_ref: "PENTEST-2026-000"      # referencia del contrato / autorización por escrito
+  authorized_by: "CISO ACME (ejemplo)"
+  start: "2026-01-01"
+  end: "2026-12-31"
+
+# Marcador benigno usado en las pruebas de agentes (PoC sin datos reales).
+canary: "ALUCINAJE-CANARY-CHANGE-ME"
+
+# Objetivos AUTORIZADOS. Acepta IP, host, host:puerto, CIDR o URL.
+targets:
+  - "127.0.0.1"
+  - "http://127.0.0.1:11434"        # Ollama local de ejemplo
+  # - "10.0.0.0/24"
+  # - "https://ollama.internal.acme.test:11434"
+
+notes: "Ejemplo de plantilla. No escanear ni atacar nada fuera de esta lista."
