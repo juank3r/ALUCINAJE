@@ -13,7 +13,8 @@
   <a href="https://github.com/juank3r/ALUCINAJE/actions/workflows/ci.yml"><img src="https://github.com/juank3r/ALUCINAJE/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
   <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="license" />
   <img src="https://img.shields.io/badge/python-3.9%2B-yellow.svg" alt="python" />
-  <img src="https://img.shields.io/badge/enfoque-defensivo-8b5cf6.svg" alt="defensivo" />
+  <img src="https://img.shields.io/badge/red%20team-ofensivo-ef4444.svg" alt="ofensivo" />
+  <img src="https://img.shields.io/badge/blue%20team-defensivo-2bc0ff.svg" alt="defensivo" />
   <img src="https://img.shields.io/badge/estado-activo-brightgreen.svg" alt="estado" />
 </p>
 
