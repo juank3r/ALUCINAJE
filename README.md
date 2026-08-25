@@ -54,6 +54,8 @@ convierte una semilla de frases revisadas por humanos en un corpus amplio, lo pr
 modelo/agente y entrega **métricas accionables** (tasa de rechazo, fugas, consistencia, latencia) — con
 un enfoque responsable que **no** produce ni difunde jailbreaks.
 
+![Por qué ALUCINAJE para red team](docs/assets/diagram-why-redteam.svg)
+
 ## Framework red team
 
 Además de medir robustez, ALUCINAJE encadena un **engagement de red team autorizado** contra IA y agentes:
